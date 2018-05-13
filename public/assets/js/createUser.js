@@ -10,12 +10,13 @@ $(document).ready(function () {
         var participant_last_name = $("#participant_last_name").val();
         var participant_email = $("#participant_email").val();
         var participant_blog = $("#participant_blog").val();
-
+        var participant_pic = $("#participant_pic").val();
         var NewUser = {
             user_First_name: participant_name,
             user_Last_name: participant_last_name,
             user_email: participant_email,
-            user_bio_info: participant_blog
+            user_bio_info: participant_blog,
+            user_pic_profile: participant_pic
         }
 
         $.post("/api/createuser",NewUser, function (data, cb) {
