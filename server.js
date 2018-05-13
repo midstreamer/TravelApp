@@ -4,7 +4,7 @@ var bodyParser = require("body-parser");
 // Sets up the Express App
 // =============================================================
 var app = express();
-var PORT = process.env.PORT || 3304;
+var PORT = process.env.PORT || 3307;
 //var exphbs = require("express-handlebars");
 
 var db = require("./models");

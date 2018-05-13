@@ -20,7 +20,17 @@ module.exports = function (app) {
     });
   });
 
+// findAll stories for participant 
 
+  app.get("/api/blog", function(req, res) {
+
+    db.Participants.findAll({
+      client_id:'1',
+      include: [db.Blog]
+    }).then(function(dbParticipants) {
+      res.json(dbParticipants);
+    });
+  });
 
 
 }
