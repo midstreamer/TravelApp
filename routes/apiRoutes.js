@@ -22,6 +22,17 @@ module.exports = function (app) {
           console.log(dbParticipants.dataValues)
     });
   });
+
+  app.get("/api/blog/:id", function(req, res) {
+    db.Participants.findOne({
+      where: {
+        client_id: req.params.id
+      }
+    }).then(function(dbParticipants) {
+      res.render("blog", {user: dbParticipants});
+      console.log(dbParticipants)
+    });
+  });
   
   //creating new user 
   app.post("/api/createuser", function (req, res) {
