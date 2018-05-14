@@ -7,7 +7,7 @@ module.exports = function (app) {
   // getting users from database
   app.get("/api/getuser", function (req, res) {
     db.Participants.findAll({}).then(function (dbParticipants) {
-      res.json(dbParticipants);
+      res.render("index", {user: dbParticipants});
       console.log(dbParticipants)
     });
   });
