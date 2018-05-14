@@ -5,6 +5,7 @@ $(document).ready(function () {
 
   // get participant from API
   function yo() {
+    maybe()
     $.get("/api/getuser/", function (data) {
       // console.log(data)
       // will need to change this logic to pull only one participant based on click (/:id) but for now just one should be good
@@ -25,7 +26,11 @@ $(document).ready(function () {
        $("#story").prepend(row);
     });
   }
+function maybe(){
+  $(this).hasClass("circle")
+  console.log($(this))
 
+}
 
 
 })

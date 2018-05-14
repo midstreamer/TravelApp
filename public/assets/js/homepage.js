@@ -21,7 +21,7 @@ $(document).ready(function () {
                 imgLocation.append(picture);
                 imgLocation.append(movingFirstAndLast);
                 $("#users_list").append(imgLocation);
-
+                movingToProfile()
                 infoToAdd.push((data[i]));
                 for (let j = 0; j < childArray.length; j++) {
                     //pulling blogs with if for linking them together i bet its another way of doing it but whatever 
@@ -37,6 +37,20 @@ $(document).ready(function () {
                 }
             }
         });
+
+
     }
+
+
+   
+function movingToProfile(){
+    $(".circle").click(function() {
+        console.log($(this))
+      });
+}
+  
+
+
+
 
 })
