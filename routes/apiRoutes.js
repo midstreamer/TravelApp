@@ -11,6 +11,17 @@ module.exports = function (app) {
       console.log(dbParticipants)
     });
   });
+
+  app.get("/api/getuser/:id", function(req, res) {
+    db.Participants.findOne({
+      where: {
+        client_id: req.params.id
+      }
+    }).then(function(dbParticipants) {
+      res.render("userProfile", {user: dbParticipants.dataValues});
+          console.log(dbParticipants.dataValues)
+    });
+  });
   
   //creating new user 
   app.post("/api/createuser", function (req, res) {

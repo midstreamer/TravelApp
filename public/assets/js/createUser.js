@@ -26,6 +26,13 @@ $(document).ready(function () {
            
         });
 
+        $("#participant_name").val('');
+        $("#participant_last_name").val('');
+        $("#participant_email").val('');
+        $("#participant_blog").val('');
+        $("#participant_pic").val('');
+
+
     }
 
 
