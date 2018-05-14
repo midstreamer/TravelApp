@@ -1,7 +1,52 @@
 <div class="container">
-    <h1>user profile page</h1>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col s12 m12">
+            <div class="card-panel white">
+                <span class="black-text">World Travel Map
+                    <img src="https://thumbs.dreamstime.com/b/hi-detail-blue-vector-political-world-map-illustration-high-cleverly-organized-layers-original-maps-cia-47581570.jpg" class="responsive-image worldMap">
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        {{#each user}}
+        <div class="col s4 m4">
+            <div class="card white">
+                <span class="card-content black-text">
+                    <ul class="collection avatar">
+                        <li class="collection-item avatar">
+                            <img src="{{ user_pic_profile }}" alt="" class="profilePic circle responsive-image"> 
+                            <span>
+                                {{ user_First_name }}
+                            </span>
+                          
+                            <span>
+                                {{ user_Last_name }}
+                            </span>
+                        </li> 
+                        <li>
+                            <p>
+                                {{ user_bio_info }}
+                            </p>
+                        </li>
+                        <div class="card-action">
+                            
+                            <a href="/api/getuser/{{ client_id }}" target="_blank">Info</a>
+                            
+                        </div>
+                        
+                        <!-- <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a> -->
+                    </ul>
+                </span>
+            </div>
+        </div>
+        {{/each}}
+
+
+
+    </div>
+</div>
 
             {{!-- <ul>
                 {{#each Participants}}
@@ -15,19 +60,14 @@
                 {{/each}}
             </ul> --}}
 
-        </div>
-
-        <div class="col-md-6">
-            <ul>
+        {{!-- <div class="col-md-6">
+            <ul> --}}
                 {{!-- {{#each Participants}}
                 <li>
                     <p>Type: {{user_First_name}}</p>
 
                 </li>
                 {{/each}} --}}
-            </ul>
+            {{!-- </ul>
 
-        </div>
-
-    </div>
-</div>
+        </div> --}}

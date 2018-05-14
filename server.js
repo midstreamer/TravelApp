@@ -1,5 +1,6 @@
 var express = require("express");
 var bodyParser = require("body-parser");
+var path = require("path");
 
 // Sets up the Express App
 // =============================================================
@@ -15,8 +16,10 @@ app.use(bodyParser.json());
 // Static directory
 app.use(express.static(__dirname +"/public/assets"));
 
-// app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-// app.set("view engine", "handlebars");
+var exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 require("./routes/apiRoutes.js")(app);
 require("./routes/htmlRoutes.js")(app);
