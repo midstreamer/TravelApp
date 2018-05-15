@@ -1,57 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <title>Show our participant</title>
-
-        <!-- CSS  -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="./css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="./css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="./js/userProfileInfo.js"></script>
-
-</head>
-
-<body>
-    <nav class="light-blue lighten-1" role="navigation">
-      <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">yaatra</a>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="C:\TravelApp\public\assets\home.html">Home</a></li>
-          <li><a href="C:\TravelApp\public\assets\blog.html">Blog</a></li>
-          <li><a href="C:\TravelApp\public\assets\userProfileInfo.html">User Profile</a></li>
-        </ul>
-  
-        <ul id="nav-mobile" class="sidenav">
-          <li><a href="#">Navbar Link</a></li>
-        </ul>
-        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      </div>
-    </nav>
-    <!-- <div class="section no-pad-bot" id="index-banner">
-      <div class="container">
-        <br><br>
-        <h1 class="header center orange-text">Starter Template</h1>
-        <div class="row center">
-          <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
-        </div>
-        <div class="row center">
-          <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
-        </div>
-        <br><br>
-  
-      </div> -->
-    <!-- </div> -->
-  
-  
-    <div class="container">
+<div class="container">
       <div class="section">
   
         <!--   Icon Section   -->
@@ -64,8 +11,16 @@
                         <!-- <ul class="collection"> -->
                             <ul class="collection avatar">
                                 <li class="collection-item avatar">
-                                    <img src="images/avatar-11.png" alt="" class="profilePic circle responsive-image">
-                                    <span class="title">Name</span>
+                                    
+                                    <img src="{{ user.user_pic_profile }}" alt="" class="profilePic circle responsive-image">
+                                    <span>
+                                        {{ user.user_First_name }}
+                                    </span>
+                          
+                                    <span>
+                                        {{ user.user_Last_name }}
+                                    </span>
+                                    
                                 </li>
                               <!-- <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a> -->
                             </ul>
@@ -78,8 +33,10 @@
                     <div class="card-panel white">
                       <span class="black-text">About Me
                           <div id = "story">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero.
+                            <p>
+                                {{ user.user_bio_info }}
                             </p>
+                        
                           </div>
                       </span>
                     </div>
@@ -123,7 +80,7 @@
                     <span class="black-text" >Stories
                         <ul class="collection">
                             <li class="collection-item avatar">
-                              <img src="images/avatar-11.png" alt="" class="circle">
+                              <img src="" alt="" class="circle">
                               <span class="title">Recommendations</span>
                               <p>Food <br>
                                  Attractions <br>
@@ -138,6 +95,7 @@
   
               <!-- <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p> -->
             </div>
+            
           </div>
           
           
@@ -191,13 +149,3 @@
         </div>
       </div>
     </footer> -->
-  
-  
-    <!--  Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="./js/materialize/materialize.js"></script>
-    <script src="./js/materialize/init.js"></script>
-  
-    </body>
-
-</html>

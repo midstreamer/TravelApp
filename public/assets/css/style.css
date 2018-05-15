@@ -12,4 +12,13 @@
 .icon-block .material-icons {
 	font-size: inherit;
 }
-body {background-color: coral;}
+
+.profilePic {
+  height: 250px;
+  width: 250px;
+}
+
+.worldMap {
+  height: 300px;
+  width: 400px;
+}

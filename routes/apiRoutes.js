@@ -7,7 +7,29 @@ module.exports = function (app) {
   // getting users from database
   app.get("/api/getuser", function (req, res) {
     db.Participants.findAll({}).then(function (dbParticipants) {
-      res.json(dbParticipants);
+      res.render("index", {user: dbParticipants});
+      console.log(dbParticipants)
+    });
+  });
+
+  app.get("/api/getuser/:id", function(req, res) {
+    db.Participants.findOne({
+      where: {
+        client_id: req.params.id
+      }
+    }).then(function(dbParticipants) {
+      res.render("userProfile", {user: dbParticipants.dataValues});
+          console.log(dbParticipants.dataValues)
+    });
+  });
+
+  app.get("/api/blog/:id", function(req, res) {
+    db.Participants.findOne({
+      where: {
+        client_id: req.params.id
+      }
+    }).then(function(dbParticipants) {
+      res.render("blog", {user: dbParticipants});
       console.log(dbParticipants)
     });
   });
@@ -29,6 +51,10 @@ module.exports = function (app) {
       res.json(dbParticipants);
     });
   });
+
+  app.get("/app/:id",function (req, res) {
+
+  })
 
 
 }
