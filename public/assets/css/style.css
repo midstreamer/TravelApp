@@ -14,8 +14,9 @@
 }
 
 .profilePic {
-  height: 250px;
-  width: 250px;
+  height: 200px;
+  width: 200px;
+  
 }
 
 .worldMap {
@@ -29,5 +30,9 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+.storyPic {
+  margin: 10px;
 }
 

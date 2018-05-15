@@ -1,39 +1,67 @@
 <div class="container">
-      <div class="section">
-  
-        <!--   Icon Section   -->
-        <div class="row">
-          <div class="col s6 m1">
-            <div class="icon-block">
 
-                <div class="card-panel white">
-                    <span class="black-text">
-                        <!-- <ul class="collection"> -->
-                            <ul class="collection avatar">
-                                <li class="collection-item avatar">
-                                    
-                                    <img src="{{ user.user_pic_profile }}" alt="" class="profilePic circle responsive-image">
-                                    <span>
-                                        {{ user.user_First_name }}
-                                    </span>
-                          
-                                    <span>
-                                        {{ user.user_Last_name }}
-                                    </span>
-                                    
-                                </li>
-                              <!-- <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a> -->
-                            </ul>
-                    </span>
-                  </div>
+  <div class="row">
+    <div class="col s2 m2">
+      <div class="card">
+        {{!-- <div class="card-image waves-effect waves-block waves-light"> --}}
+          <img src="{{ user.user_pic_profile }}" alt="" class="circle responsive-img center-align">
+        
+        {{!-- </div> --}}
+        <div class="card-content center-align">
+          <p>
+            {{ user.user_First_name }} {{ user.user_Last_name }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col s8"></div>
+    <div class="col s2"></div>
+    
+    
+  </div>
+
+
+
+
+
+{{!-- 
+        <div class="row">
+          <div class="col s2 m1">
+              <div class="card white">
+                <span class="black-text">
+                    <!-- <ul class="collection"> -->
+                        <ul class="collection avatar">
+                            <li class="collection-item avatar">
+                                
+                                <img src="{{ user.user_pic_profile }}" alt="" class="profilePic circle responsive-image">
+                                <span>
+                                    {{ user.user_First_name }}
+                                </span>
+                      
+                                <span>
+                                    {{ user.user_Last_name }}
+                                </span>
+                                
+                            </li>
+                          <!-- <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a> -->
+                        </ul>
+                </span>
+            </div>
+          </div>
+              
+         </div> --}}
 
 <!-- =============================================== -->
-<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-            <div class="card">
+          <section>
+            <div class="card-panel">
               <div class="row">
-                <div class="col s2">
-                  <img src="https://cdn.pixabay.com/photo/2018/05/13/17/18/paris-3397173_1280.jpg" alt="" class="card-image" width="250px" height="250px">
-                </div>
+                
+                <ul class="collection storyPic">
+                  <li class="collection-item">
+                  <img src="https://cdn.pixabay.com/photo/2018/05/13/17/18/paris-3397173_1280.jpg" alt="" class="card-image responsive-img center-align" width="250px" height="250px">
+                  </li>
+                </ul>
+                
                 <div class="col s10">
                   <div class="card-content">                  
                     <h4 class="card-title">Story Title<i class="material-icons right">more_vert</i></h4>
@@ -92,3 +120,5 @@
                   </div>
                 </div>
               </div>
+
+          </div>

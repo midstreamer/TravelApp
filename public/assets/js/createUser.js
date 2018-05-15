@@ -32,6 +32,8 @@ $(document).ready(function () {
         $("#participant_blog").val('');
         $("#participant_pic").val('');
 
+        alert("User successfully created!");
+
 
     }
 
