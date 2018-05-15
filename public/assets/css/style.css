@@ -22,3 +22,12 @@
   height: 300px;
   width: 400px;
 }
+
+.userPageStory {
+    display: block;
+    width: 400px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
