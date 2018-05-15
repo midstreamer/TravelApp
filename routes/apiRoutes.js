@@ -29,8 +29,19 @@ module.exports = function (app) {
         client_id: req.params.id
       }
     }).then(function(dbParticipants) {
-      res.render("blog", {user: dbParticipants});
-      console.log(dbParticipants)
+      res.render("blog", {user: dbParticipants.dataValues});
+      console.log(dbParticipants.dataValues)
+    });
+  });
+
+  app.get("/api/blog/:participantid", function(req, res) {
+    db.Blog.findOne({
+      where: {
+        ParticipantClientId: req.params.participantid
+      }
+    }).then(function(dbBlog) {
+      res.render("blog", {story: dbBlog.dataValues});
+      console.log(dbBlog.dataValues)
     });
   });
   

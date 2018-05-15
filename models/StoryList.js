@@ -1,6 +1,7 @@
 module.exports = function (sequelize, DataTypes) {
 	var Blog = sequelize.define("Blog", {
-            user_StoryList: DataTypes.STRING(10000)
+            user_StoryList: DataTypes.STRING(10000),
+            ParticipantClientId: DataTypes.INTEGER
     });
     
     Blog.associate = function(models) {
