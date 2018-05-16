@@ -14,7 +14,11 @@ module.exports = function (sequelize, DataTypes) {
         user_pic_profile:DataTypes.STRING
 
 
-    });
+    },
+    {raw:false});
+
+
+
     Participants.associate = function(models) {
         // Associating Author with Posts
         // When an Author is deleted, also delete any associated Posts

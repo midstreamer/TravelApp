@@ -6,7 +6,9 @@ var db = require("../models");
 module.exports = function (app) {
   // getting users from database
   app.get("/api/getuser", function (req, res) {
-    db.Participants.findAll({}).then(function (dbParticipants) {
+    db.Participants.findAll({
+      include : {model:db.Blog}
+    }).then(function (dbParticipants) {
       res.render("index", {user: dbParticipants});
       console.log(dbParticipants)
     });
@@ -25,25 +27,30 @@ module.exports = function (app) {
 
   app.get("/api/blog/:id", function(req, res) {
     db.Participants.findOne({
+
       where: {
         client_id: req.params.id
+      },
+      include: {
+        model:db.Blog,
+        
       }
     }).then(function(dbParticipants) {
       res.render("blog", {user: dbParticipants.dataValues});
-      console.log(dbParticipants.dataValues)
+      console.log(dbParticipants)
     });
   });
 
-  app.get("/api/blog/:participantid", function(req, res) {
-    db.Blog.findOne({
-      where: {
-        ParticipantClientId: req.params.participantid
-      }
-    }).then(function(dbBlog) {
-      res.render("blog", {story: dbBlog.dataValues});
-      console.log(dbBlog.dataValues)
-    });
-  });
+  // app.get("/api/blog/:participantid", function(req, res) {
+  //   db.Blog.findOne({
+  //     where: {
+  //       ParticipantClientId: req.params.participantid
+  //     }
+  //   }).then(function(dbBlog) {
+  //     res.render("blog", {story: dbBlog.dataValues});
+  //     console.log(dbBlog.dataValues)
+  //   });
+  // });
   
   //creating new user 
   app.post("/api/createuser", function (req, res) {
