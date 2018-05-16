@@ -2,10 +2,14 @@
   "development": {
     "username": "root",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "password": null,
 =======
     "password": "banshee1",
 >>>>>>> 6cf08ea2b99b2800868e0e23226cc6b672439aec
+=======
+    "password": "Joseph2603!!!",
+>>>>>>> ff39603b453f931184fa59a5b62bccb2a2188b0d
     "database": "TravelApp",
     "host": "127.0.0.1",
     "dialect": "mysql"
