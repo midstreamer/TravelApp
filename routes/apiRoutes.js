@@ -21,10 +21,13 @@ module.exports = function (app) {
     db.Participants.findOne({
       where: {
         client_id: req.params.id
-      }
+      }, 
+      include:[db.Blog, db.rec_food, db.rec_att, db.rec_eve]
     }).then(function(dbParticipants) {
-      res.render("userProfile", {user: dbParticipants.dataValues});
-          console.log(dbParticipants.dataValues)
+      res.render("userProfile", {user: dbParticipants.dataValues, blog: dbParticipants.dataValues.Blogs, food: dbParticipants.dataValues.rec_foods, attractions: dbParticipants.dataValues.rec_atts, events: dbParticipants.dataValues.rec_eves});
+
+      console.log(dbParticipants.dataValues.rec_eves[0])
+          
     });
   });
 

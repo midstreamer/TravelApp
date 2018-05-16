@@ -1,9 +1,9 @@
-<div class="container">
+{{!-- <div class="container"> --}}
       <div class="section">
   
         <!--   Icon Section   -->
         <div class="row">
-          <div class="col s3 m1">
+          <div class="col s4 m4">
             <div class="icon-block">
 
                 <div class="card-panel white">
@@ -28,7 +28,7 @@
               <!-- <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2> -->
               <!-- <h5 class="center">Speeds up development</h5> -->
               <div class="row">
-                  <div class="col s3 m2">
+                  <div class="col s12">
                     <div class="card-panel white">
                       <span class="black-text">About Me
                           <div id = "story">
@@ -40,40 +40,63 @@
                       </span>
                     </div>
                   </div>
-                </div>
+              </div>
               <div class="row">
-                  <div class="col s3 m2">
-                      <div class="row">
-                          <div class="col s3 m2">
+                  <div class="col s12">
+                      
                             <div class="card-panel white">
                               <span class="black-text">Pictures
                               </span>
                             </div>
-                          </div>
-                      </div>
+                          
                   </div>
-                </div>
+              </div>
   
-              <!-- <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p> -->
+              <!-- icon-block -->
             </div>
           </div>
   
-          <div class="col s6 m11">
+          <div class="col s8 m8">
+            <div class="icon-block">
             <!-- <div class="icon-block">
               <h2 class="center light-blue-text"><i class="material-icons">group</i></h2> -->
               <!-- <h5 class="center">User Experience Focused</h5> -->
 
               <div class="row">
-                <div class="col s12 m5">
+                <div class="col s12">
                   <div class="card-panel white">
                     <span class="black-text">MAP
                     </span>
-                    <img src="https://thumbs.dreamstime.com/b/hi-detail-blue-vector-political-world-map-illustration-high-cleverly-organized-layers-original-maps-cia-47581570.jpg" class="responsive-image worldMap">
+                    <img src="https://thumbs.dreamstime.com/b/hi-detail-blue-vector-political-world-map-illustration-high-cleverly-organized-layers-original-maps-cia-47581570.jpg" class="responsive-img worldMap">
                   </div>
                 </div>
               </div>
 
+          <section>
+            <div class="card">
               <div class="row">
+                <div class="col s4">
+                  <div class="card-image">
+                  <img src="https://cdn.pixabay.com/photo/2018/05/13/17/18/paris-3397173_1280.jpg" alt="" class="card-image responsive-img storyImg">
+                  </div>
+                </div>
+                <div class="col s8">
+                  <div class="card-content">                  
+                    <h4 class="card-title">Story Title<i class="material-icons right">more_vert</i></h4>
+                    {{#each blog}}
+                    {{ dataValues.user_StoryList }}
+                    {{/each}}
+                  </div>
+                  <div class="card-action">
+                    <a href="/api/blog/{{ user.client_id }}" target="_blank">Read Story</a>
+                    <a href="#" class="mdl-button">Comment</a>
+                  </div>
+                </div>              
+              </div>
+            </div>                
+          </section>
+
+              {{!-- <div class="row">
                 <div class="col s12 m12">
                   <div class="card-panel white">
                     <span class="black-text" >Stories
@@ -94,78 +117,68 @@
                     </span>
                 </div>
                 </div>
-              </div>
+              </div> --}}
 
               <div class="row">
-                <div class="col s12 m12">
+                <div class="col s12">
                     <div class="card-panel white">
                        <span class="title">Recommendations</span>
-                              <p>Food <br>
-                                 Attractions <br>
-                                 Events <br>
-                              </p> 
+                              
+                              
+                              <ul class="collection with-header">
+                                <li class="collection-header">
+                                  <h5>Restaurants/Dining</h5>
+                                </li>
+                                {{#each food}}
+                                <li class="collection-item avatar">
+                                  <i class="material-icons circle green">local_dining</i>
+                                  <P>{{ dataValues.user_rec_food }}</P>
+                                </li>
+                                {{/each}}
+                              </ul>
+
+                              <ul class="collection with-header">
+                                <li class="collection-header">
+                                  <h5>Attractions</h5>
+                                </li>
+                                {{#each attractions }}
+                                <li class="collection-item avatar">
+                                  <i class="material-icons circle blue">photo_camera</i>
+                                  <P>{{ dataValues.user_rec_att }}</P>
+                                </li>
+                                {{/each}} 
+                              </ul>
+
+                              <ul class="collection with-header">
+                                <li class="collection-header">
+                                  <h5>Events</h5>
+                                </li>
+                                {{#each events }}
+                                <li class="collection-item avatar">
+                                  <i class="material-icons circle red">photo_camera</i>
+                                  <P>{{ dataValues.user_rec_eve }}</P>
+                                </li>
+                                {{/each}} 
+                              </ul>
+                            
                         
                     </div>
                 </div>
               </div>
 
                               
-                  
+              <!-- icon block -->    
               </div>
-  
-              <!-- <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p> -->
+      <!-- col s9 -- >
+  </div>
+              <!-- row -->
             </div>
             
+            <!-- section -->
           </div>
+<!-- container -->
+          {{!-- </div> --}}
           
           
   
-          <!-- <div class="col s12 m4">
-            <div class="icon-block">
-              <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
-              <h5 class="center">Easy to work with</h5>
-  
-              <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
-            </div>
-          </div> -->
-        <!-- </div>
-  
-      </div>
-      <br><br>
-    </div>
-   -->
-    <!-- <footer class="page-footer orange">
-      <div class="container">
-        <div class="row">
-          <div class="col l6 s12">
-            <h5 class="white-text">Company Bio</h5>
-            <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-  
-  
-          </div>
-          <div class="col l3 s12">
-            <h5 class="white-text">Settings</h5>
-            <ul>
-              <li><a class="white-text" href="#!">Link 1</a></li>
-              <li><a class="white-text" href="#!">Link 2</a></li>
-              <li><a class="white-text" href="#!">Link 3</a></li>
-              <li><a class="white-text" href="#!">Link 4</a></li>
-            </ul>
-          </div>
-          <div class="col l3 s12">
-            <h5 class="white-text">Connect</h5>
-            <ul>
-              <li><a class="white-text" href="#!">Link 1</a></li>
-              <li><a class="white-text" href="#!">Link 2</a></li>
-              <li><a class="white-text" href="#!">Link 3</a></li>
-              <li><a class="white-text" href="#!">Link 4</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="footer-copyright">
-        <div class="container">
-        Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-        </div>
-      </div>
-    </footer> -->
+         
