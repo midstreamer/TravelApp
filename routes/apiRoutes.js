@@ -32,7 +32,8 @@ module.exports = function (app) {
       },
       include:[db.Blog]
     }).then(function(dbParticipants) {
-      res.render("blog", {user: dbParticipants.dataValues});
+      res.render("blog", {user: dbParticipants.dataValues,
+      blog:dbParticipants.dataValues.Blogs});
       
       // console.log(dbParticipants.dataValues.Blogs[0].dataValues.user_StoryList)
     });

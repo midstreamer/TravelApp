@@ -65,7 +65,9 @@
                 <div class="col s10">
                   <div class="card-content">                  
                     <h4 class="card-title">Story Title<i class="material-icons right">more_vert</i></h4>
-                    {{!-- {{ user.Blogs.dataValues.user_StoryList }} --}}
+                    {{#each blog}}
+                    {{ dataValues.user_StoryList }}
+                    {{/each}}
                   </div>
                   <div class="card-action">
                     <a href="#" class="mdl-button">Comment</a>
