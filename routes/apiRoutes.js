@@ -34,7 +34,7 @@ module.exports = function (app) {
     }).then(function(dbParticipants) {
       res.render("blog", {user: dbParticipants.dataValues});
       
-      console.log(dbParticipants.dataValues.Blogs[0].dataValues.user_StoryList)
+      // console.log(dbParticipants.dataValues.Blogs[0].dataValues.user_StoryList)
     });
   });
 
