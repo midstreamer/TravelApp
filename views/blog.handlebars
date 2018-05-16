@@ -53,27 +53,45 @@
 
 <!-- =============================================== -->
           <section>
-            <div class="card-panel">
-              <div class="row">
-                
-                <ul class="collection storyPic">
-                  <li class="collection-item">
-                  <img src="https://cdn.pixabay.com/photo/2018/05/13/17/18/paris-3397173_1280.jpg" alt="" class="card-image responsive-img center-align" width="250px" height="250px">
-                  </li>
-                </ul>
-                
-                <div class="col s10">
-                  <div class="card-content">                  
-                    <h4 class="card-title">Story Title<i class="material-icons right">more_vert</i></h4>
+            <div class="col s12">
+            <h4 class="header white-text">My Story</h4>
+            <div class="row">
+            <div class="card horizontal">
+              
+                {{!-- <div class="col s4"> --}}
+                  <div class="card-image">
+                  <img src="https://cdn.pixabay.com/photo/2018/05/13/17/18/paris-3397173_1280.jpg" alt="" class="card-image responsive-img storyImg">
+                  </div>
+                {{!-- </div> --}}
+                {{!-- <div class="col s8"> --}}
+                  <div class="card-stacked">
+                  <div class="card-content">
+                    <h3 class="card-title">Story Title</h3>                  
+                    <h5 class="card-title">MM/DD/YYYY HH/MM AM/PM<i class="material-icons right">more_vert</i></h5>
                     {{#each blog}}
                     {{ dataValues.user_StoryList }}
                     {{/each}}
+                    <hr>
+                    
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel iaculis nunc. Cras lacinia nunc nulla, et euismod turpis posuere eu. Donec sit amet ullamcorper justo, sed cursus orci. Mauris dignissim semper justo, vel commodo velit euismod eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula rhoncus sapien, non ultricies elit mattis eget. Phasellus venenatis gravida fringilla. Ut ac magna tortor.
+
+Morbi scelerisque eu est et viverra. Pellentesque placerat maximus rhoncus. Proin rutrum ultrices orci, nec rutrum orci auctor eu. Integer commodo odio odio, vel malesuada justo egestas vitae. Sed velit erat, dapibus ac faucibus eget, sodales ut arcu. Pellentesque vestibulum, est non feugiat semper, lorem arcu accumsan quam, nec pretium turpis felis in odio. In id ullamcorper mauris. Donec placerat quam vitae lorem tincidunt, eget imperdiet lectus pellentesque. Morbi justo metus, tristique id augue dignissim, varius commodo ante. Donec efficitur risus nec interdum lacinia.
+
+Pellentesque sit amet urna purus. Etiam magna nulla, malesuada at vulputate ut, efficitur quis erat. Praesent elit ex, auctor id consequat sed, tempor eu nibh. Integer varius, mi sit amet consequat efficitur, risus nunc elementum mi, eget facilisis leo sem vitae nisi. Nulla eleifend odio et ex commodo pharetra. Maecenas non tellus orci. Sed malesuada libero ut est ultrices viverra. Mauris ac nulla rhoncus, consequat quam ac, vehicula sem. Curabitur in lacus at ante varius ultricies. Praesent varius semper dolor, vel auctor ligula mattis sit amet.
+
+Nam consectetur, eros nec aliquam gravida, augue massa mattis sem, nec porttitor metus nisl vel massa. Integer tristique risus id tortor auctor, at vehicula nibh cursus. Vivamus non arcu vitae tortor maximus molestie quis a urna. Morbi ac augue vel lacus viverra fermentum. Pellentesque et velit in nunc sodales placerat. Quisque a augue vitae orci faucibus ultrices. Suspendisse potenti. Sed tempor maximus arcu et finibus. In facilisis neque et diam tempus, non placerat orci lobortis. Vestibulum faucibus non diam non rhoncus. Quisque purus eros, ullamcorper sit amet pharetra in, convallis a elit. Pellentesque non pulvinar massa, id pharetra arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec vel purus augue. Aliquam euismod libero et tincidunt pretium.
+
+Vestibulum finibus, dolor ac condimentum consectetur, nisl odio placerat orci, at molestie leo orci ac dolor. Sed ultrices ante eget justo rhoncus consequat. Morbi ultrices tincidunt est, nec hendrerit mauris tincidunt et. Donec sapien arcu, pulvinar non varius sit amet, finibus eu ante. Duis ullamcorper, dolor at condimentum pulvinar, nibh tellus commodo purus, sit amet suscipit sapien nisl a ante. Suspendisse a massa at dui hendrerit faucibus auctor non nisi. Aenean tincidunt suscipit ligula, non sagittis justo porta id. Maecenas ullamcorper scelerisque dui id porta. Quisque posuere id massa sit amet finibus. Donec condimentum orci ut arcu congue, tempor vehicula metus ultrices.
                   </div>
                   <div class="card-action">
+                    
                     <a href="#" class="mdl-button">Comment</a>
+                    <a href="#" class="mdl-button">Useful!</a>
                   </div>
-                </div>              
+                  </div>
+                {{!-- </div>               --}}
               </div>
+            </div>
             </div>                
           </section>
 
@@ -104,23 +122,51 @@
                 </div>
               </div> --}}
 
-              <div class="row">
-                <div class="col s12 m5">
-                  <div class="card-panel hoverable card-panel white">
-                    <span class="black-text">
-                        <ul class="collection">
-                            <li class="collection-item avatar">
-                              <img src="images/avatar-11.png" alt="" class="circle">
-                              <span class="title">Recommendations</span>
-                              <p>Food <br>
-                                 Attractions <br>
-                                 Events <br>
-                              </p>
-                              <!-- <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a> -->
-                            </li>
-                    </span>
-                  </div>
+              {{!-- <div class="row">
+                <div class="col s12">
+                    <div class="card-panel white">
+                       <h4 class="title">Recommendations</h4>
+                              
+                              
+                              <ul class="collection with-header">
+                                <li class="collection-header">
+                                  <h5>Restaurants/Dining</h5>
+                                </li>
+                                {{#each food}}
+                                <li class="collection-item avatar">
+                                  <i class="material-icons circle green">local_dining</i>
+                                  <P>{{ dataValues.user_rec_food }}</P>
+                                </li>
+                                {{/each}}
+                              </ul>
+
+                              <ul class="collection with-header">
+                                <li class="collection-header">
+                                  <h5>Attractions</h5>
+                                </li>
+                                {{#each attractions }}
+                                <li class="collection-item avatar">
+                                  <i class="material-icons circle blue">photo_camera</i>
+                                  <P>{{ dataValues.user_rec_att }}</P>
+                                </li>
+                                {{/each}} 
+                              </ul>
+
+                              <ul class="collection with-header">
+                                <li class="collection-header">
+                                  <h5>Events</h5>
+                                </li>
+                                {{#each events }}
+                                <li class="collection-item avatar">
+                                  <i class="material-icons circle red">photo_camera</i>
+                                  <P>{{ dataValues.user_rec_eve }}</P>
+                                </li>
+                                {{/each}} 
+                              </ul>
+                            
+                        
+                    </div>
                 </div>
-              </div>
+              </div> --}}
 
           </div>
