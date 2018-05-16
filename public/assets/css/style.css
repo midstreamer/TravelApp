@@ -14,6 +14,39 @@ body{
 .icon-block .material-icons {
 	font-size: inherit;
 }
+.circle-frame {
+  background-position: 50% 35%;
+  background-repeat: no-repeat;
+  background-color: tan;
+  border: 1px solid black;
+  border-radius: 50%;
+  position: relative;
+  width: 70px; 
+  height: 50px; 
+  left: 25px;
+  top: -45px;
+  padding-top: 0%; 
+  float: left; 
+}
+
+.card-title {
+  position: relative;
+  left: 125px;
+}
+
+
+
+.userPageStory {
+  position: relative;
+  left: -55px;
+  -webkit-text-size-adjust: none;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.4em;
+  padding: 3em;
+}
+
 
 .profilePic {
   height: 200px;
