@@ -27,23 +27,25 @@ module.exports = function (app) {
     db.Participants.findOne({
       where: {
         client_id: req.params.id
-      }
+      },
+      include:[db.Blog]
     }).then(function(dbParticipants) {
       res.render("blog", {user: dbParticipants.dataValues});
-      console.log(dbParticipants.dataValues)
+      
+      console.log(dbParticipants.dataValues.Blogs[0].dataValues.user_StoryList)
     });
   });
 
-  app.get("/api/blog/:participantid", function(req, res) {
-    db.Blog.findOne({
-      where: {
-        ParticipantClientId: req.params.participantid
-      }
-    }).then(function(dbBlog) {
-      res.render("blog", {story: dbBlog.dataValues});
-      console.log(dbBlog.dataValues)
-    });
-  });
+  // app.get("/api/blog/:participantid", function(req, res) {
+  //   db.Blog.findOne({
+  //     where: {
+  //       ParticipantClientId: req.params.participantid
+  //     }
+  //   }).then(function(dbBlog) {
+  //     res.render("blog", {story: dbBlog.dataValues});
+  //     console.log(dbBlog.dataValues)
+  //   });
+  // });
   
   //creating new user 
   app.post("/api/createuser", function (req, res) {
