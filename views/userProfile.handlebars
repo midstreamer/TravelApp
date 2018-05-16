@@ -1,30 +1,25 @@
 {{!-- <div class="container"> --}}
       <div class="section">
-  
-        <!--   Icon Section   -->
         <div class="row">
           <div class="col s4 m4">
             <div class="icon-block">
 
-                <div class="card-panel white">
-                    <span class="black-text">
-                        <!-- <ul class="collection"> -->
-                            <ul class="collection avatar">
-                                <li class="collection-item avatar">
-                                    
-                                    <img src="{{ user.user_pic_profile }}" alt="" class="profilePic circle responsive-image">
-                                    <span>
-                                        {{ user.user_First_name }}
-                                    </span>
-                                    <span>
-                                        {{ user.user_Last_name }}
-                                    </span>
-                                    
-                                </li>
-                              <!-- <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a> -->
-                            </ul>
-                    </span>
-                  </div>
+  <div class="row">
+    <div class="col s12">
+      <div class="card horizontal">
+          <div class="card-image">
+              <img src="{{ user.user_pic_profile }}" alt="" class="responsive-img">
+          </div>
+          <div class="card-stacked">
+          <div class="card-content">
+            <p>
+              {{ user.user_First_name }} {{ user.user_Last_name }}
+            </p>
+          </div>
+          </div>
+      </div>
+    </div>
+  </div>
               <!-- <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2> -->
               <!-- <h5 class="center">Speeds up development</h5> -->
               <div class="row">
@@ -64,10 +59,10 @@
 
               <div class="row">
                 <div class="col s12">
-                  <div class="card-panel white">
-                    <span class="black-text">MAP
-                    </span>
-                    <img src="https://thumbs.dreamstime.com/b/hi-detail-blue-vector-political-world-map-illustration-high-cleverly-organized-layers-original-maps-cia-47581570.jpg" class="responsive-img worldMap">
+                  <div class="card">
+                    <div class="card-image">
+                      <img src="https://thumbs.dreamstime.com/b/hi-detail-blue-vector-political-world-map-illustration-high-cleverly-organized-layers-original-maps-cia-47581570.jpg" class="responsive-image worldMap">
+                    </div>
                   </div>
                 </div>
               </div>
