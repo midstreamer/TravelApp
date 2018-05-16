@@ -59,7 +59,7 @@ class="ls-l" data-ls="showinfo:1; durationin:500;">
         <!--   Icon Section   -->
         <div class="row">
           <div class="col s6 m1">
-            <div class="icon-block">
+            <div class="icon-block" style="display:none;">
 
                 <div class="card-panel hoverable card-panel white">
                     <span class="black-text">
@@ -78,7 +78,7 @@ class="ls-l" data-ls="showinfo:1; durationin:500;">
               <!-- <h5 class="center">Speeds up development</h5> -->
               <div class="row">
                   <div class="col s6 m5">
-                    <div class="card-panel hoverable card-panel white">
+                    <div class="card-panel card-panel white" style="display:none;">
                       <span class="black-text">About Me
                           <div id = "story"></div>
                       </span>
@@ -89,7 +89,7 @@ class="ls-l" data-ls="showinfo:1; durationin:500;">
                   <div class="col s6 m5">
                       <div class="row">
                           <div class="col s6 m5">
-                            <div class="card-panel hoverable card-panel white">
+                            <div class="card-panel card-panel white" style="display:none;">
                               <span class="black-text">Pictures
                               </span>
                             </div>
@@ -109,7 +109,7 @@ class="ls-l" data-ls="showinfo:1; durationin:500;">
 
               <div class="row">
                 <div class="col s12 m5">
-                  <div class="card-panel hoverable card-panel white">
+                  <div class="card-panel card-panel white" style="display:none;">
                     <span class="black-text">MAP
                     </span>
                   </div>
@@ -118,7 +118,7 @@ class="ls-l" data-ls="showinfo:1; durationin:500;">
 
               <div class="row">
                 <div class="col s12 m5">
-                  <div class="card-panel hoverable card-panel white">
+                  <div class="card-panel card-panel white" style="display:none;">
                     <span class="black-text" >Stories
                         <ul class="collection">
                             <li class="collection-item avatar">
@@ -191,7 +191,12 @@ class="ls-l" data-ls="showinfo:1; durationin:500;">
       </div>
     </footer> -->
   
-  
+    <script>$(document).ready(function () {
+      $('div.icon-block').fadeIn(2200);
+      $('div.card-panel').fadeIn(2200);
+      $('div.card-panel').fadeIn(2200);
+      
+  });</script> 
     <!--  Scripts-->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="./js/materialize/materialize.js"></script>

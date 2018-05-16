@@ -43,7 +43,7 @@ class="ls-l" data-ls="showinfo:1; durationin:500;">
           </nav>
           <br><br>
           
-    <div class="container">
+    <div class="container" style="display:none;">
         <div class="col-md-6">
                  
             <form>
@@ -71,7 +71,9 @@ class="ls-l" data-ls="showinfo:1; durationin:500;">
             <button type="submit" id="submit" class="btn btn-success submit">Submit</button>
         </div>
     </div>
-  
+    <script>$(document).ready(function () {
+        $('div.container').fadeIn(2200);
+    });</script> 
 </body>
 
 </html>
