@@ -23,7 +23,7 @@ INSERT INTO `travelapp`.`Blogs` (`id`, `user_StoryList`, `createdAt`, `updatedAt
 
 
 -- for REC user info for two people
---person one with ID of 1
+-- person one with ID of 1
 INSERT INTO `travelapp`.`rec_foods` (`id`, `user_rec_food`, `createdAt`, `updatedAt`, `ParticipantClientId`) VALUES ('1', 'SUBWAY®Restaurants', '2018-05-12 22:54:28', '2018-05-12 22:54:28', '1');
 INSERT INTO `travelapp`.`rec_atts` (`id`, `user_rec_att`, `createdAt`, `updatedAt`, `ParticipantClientId`) VALUES ('1', 'Downtown Aquarium', '2018-05-12 22:54:28', '2018-05-12 22:54:28', '1');
 INSERT INTO `travelapp`.`rec_eves` (`id`, `user_rec_eve`, `createdAt`, `updatedAt`, `ParticipantClientId`) VALUES ('1', 'NRG Center', '2018-05-12 22:54:28', '2018-05-12 22:54:28', '1');
@@ -31,7 +31,7 @@ INSERT INTO `travelapp`.`rec_foods` (`id`, `user_rec_food`, `createdAt`, `update
 INSERT INTO `travelapp`.`rec_atts` (`id`, `user_rec_att`, `createdAt`, `updatedAt`, `ParticipantClientId`) VALUES ('2', 'Downtown Aquarium', '2018-05-12 22:54:28', '2018-05-12 22:54:28', '1');
 INSERT INTO `travelapp`.`rec_eves` (`id`, `user_rec_eve`, `createdAt`, `updatedAt`, `ParticipantClientId`) VALUES ('2', 'NRG Center', '2018-05-12 22:54:28', '2018-05-12 22:54:28', '1');
 
---person two with id of 2
+-- person two with id of 2
 INSERT INTO `travelapp`.`rec_foods` (`id`, `user_rec_food`, `createdAt`, `updatedAt`, `ParticipantClientId`) VALUES ('3', 'Thai Style Fast Food', '2018-05-12 22:54:28', '2018-05-12 22:54:28', '2');
 INSERT INTO `travelapp`.`rec_atts` (`id`, `user_rec_att`, `createdAt`, `updatedAt`, `ParticipantClientId`) VALUES ('3', 'Downtown Aquarium', '2018-05-12 22:54:28', '2018-05-12 22:54:28', '2');
 INSERT INTO `travelapp`.`rec_eves` (`id`, `user_rec_eve`, `createdAt`, `updatedAt`, `ParticipantClientId`) VALUES ('3', 'NRG Center', '2018-05-12 22:54:28', '2018-05-12 22:54:28', '2');

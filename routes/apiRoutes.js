@@ -6,7 +6,7 @@ var passport = require("../config/passport");
 // Routes
 // =============================================================
 module.exports = function (app) {
-  // getting users from database
+// HOME PAGE: getting users from database
   app.get("/api/getuser", function (req, res) {
     db.Participants.findAll({
       include : {model:db.Blog}
@@ -16,6 +16,7 @@ module.exports = function (app) {
     });
   });
 
+//USER PROFILE PAGE
   app.get("/api/getuser/:id", function(req, res) {
     db.Participants.findOne({
       where: {
@@ -27,6 +28,7 @@ module.exports = function (app) {
     });
   });
 
+//USER BLOG PAGE
   app.get("/api/blog/:id", function(req, res) {
     db.Participants.findOne({
 
@@ -42,17 +44,6 @@ module.exports = function (app) {
     });
   });
 
-  // app.get("/api/blog/:participantid", function(req, res) {
-  //   db.Blog.findOne({
-  //     where: {
-  //       ParticipantClientId: req.params.participantid
-  //     }
-  //   }).then(function(dbBlog) {
-  //     res.render("blog", {story: dbBlog.dataValues});
-  //     console.log(dbBlog.dataValues)
-  //   });
-  // });
-  
   //creating new user 
 
     // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
