@@ -33,22 +33,12 @@ module.exports = function (app) {
       where: {
         client_id: req.params.id
       },
-<<<<<<< HEAD
-      include: {
-        model:db.Blog,
-        
-      }
-    }).then(function(dbParticipants) {
-      res.render("blog", {user: dbParticipants.dataValues});
-      console.log(dbParticipants)
-=======
       include:[db.Blog]
     }).then(function(dbParticipants) {
       res.render("blog", {user: dbParticipants.dataValues,
       blog:dbParticipants.dataValues.Blogs});
       
       // console.log(dbParticipants.dataValues.Blogs[0].dataValues.user_StoryList)
->>>>>>> 6cf08ea2b99b2800868e0e23226cc6b672439aec
     });
   });
 
@@ -83,8 +73,8 @@ module.exports = function (app) {
 // findAll stories for participant 
   app.get("/api/blog", function(req, res) {
     db.Participants.findAll({
-      // client_id:'1',
-      include: [db.Blog]
+
+      include:[db.Blog,db.rec_food,db.rec_att,db.rec_eve]
     }).then(function(dbParticipants) {
       res.json(dbParticipants);
     });

@@ -31,12 +31,32 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Participants.associate = function (models) {
-        // Associating Author with Posts
-        // When an Author is deleted, also delete any associated Posts
+      
+        // Users Blogs stories
         Participants.hasMany(models.Blog, {
             onDelete: "cascade"
         });
+
+        //Users rec 
+                Participants.hasMany(models.rec_food, {
+            onDelete: "cascade"
+        });
+        Participants.hasMany(models.rec_att, {
+            onDelete: "cascade"
+        });
+        Participants.hasMany(models.rec_eve, {
+            onDelete: "cascade"
+        });
+        // 
     };
+    
+    // Participants.associate = function (models) {
+    //     // Associating Author with Posts
+    //     // When an Author is deleted, also delete any associated Posts
+    //     Participants.hasMany(models.rec_food, {
+    //         onDelete: "cascade"
+    //     });
+    // };
 
     //   User.associate = function(models) {
     //     User.hasMany(models.location, {
