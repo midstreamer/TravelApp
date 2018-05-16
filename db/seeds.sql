@@ -1,14 +1,14 @@
 
-INSERT INTO `travelapp`.`Participants` (`client_id`, `user_First_name`, `user_Last_name`, `user_email`, `user_bio_info`, `user_pic_profile`, `createdAt`, `updatedAt`) 
+INSERT INTO `travelapp`.`Participants` (`client_id`, `user_First_name`, `user_Last_name`, `user_email`, `user_bio_info`, `user_pic_profile`, `user_password`,`createdAt`, `updatedAt`) 
 VALUES (DEFAULT, 'John', 'Smith', 'JOhn.Smith@gmail.com', 'People often say that the ‘best things come in small packages‘ and for this hotel that has tiny but modern rooms, 
 such a statement is true. But don’t let the word ‘tiny’ fool you; it’s not so cramped here — the rooms have more distance between the walls! In fact, they even have this huge 
 Play Room that has a fireplace, two ping-pong tables, ample bookshelves, and a 25-foot bar where you can enjoy a drink or meet fellow travelers. As day passes by, you can satiate your 
 food-cravings at Pod 39’s colorful taqueria/cantina called as ‘Salvation Taco’, and when the night creeps in, you can head to their rooftop lounge to
-unwind\n ', 'https://taquilladecine.com/wp-content/uploads/2015/07/darth-vader-star-wars-anthology-rogue-one.jpg', '2018-05-12 22:54:28', '2018-05-12 22:54:28');
+unwind\n ', 'https://taquilladecine.com/wp-content/uploads/2015/07/darth-vader-star-wars-anthology-rogue-one.jpg', 'bootcamp', '2018-05-12 22:54:28', '2018-05-12 22:54:28');
 
 
 
-INSERT INTO `Participants` (`client_id`,`user_First_name`,`user_Last_name`,`user_email`,`user_bio_info`,`user_pic_profile`,`createdAt`,`updatedAt`) VALUES (DEFAULT,'David','Smith','David.Smith@gmail.com','With an affordable rate, you will have a dreamy time away as you ride their spectacular 82-foot 1929 vintage yacht that is well-maintained and has even been featured on famous publications like The New York Times, In Style Wedding, and Gourmet Magazine. To add more to the ‘allure’ of this vessel, it has even been featured on NBC’s show: The Apprentice!','http://www.comingsoon.net/assets/uploads/2017/12/luke-hot-toy-header-tlj.jpg','2018-05-13 02:19:34','2018-05-13 02:19:34');
+INSERT INTO `Participants` (`client_id`,`user_First_name`,`user_Last_name`,`user_email`,`user_bio_info`,`user_pic_profile`, `user_password`, `createdAt`,`updatedAt`) VALUES (DEFAULT,'David','Smith','David.Smith@gmail.com','With an affordable rate, you will have a dreamy time away as you ride their spectacular 82-foot 1929 vintage yacht that is well-maintained and has even been featured on famous publications like The New York Times, In Style Wedding, and Gourmet Magazine. To add more to the ‘allure’ of this vessel, it has even been featured on NBC’s show: The Apprentice!','http://www.comingsoon.net/assets/uploads/2017/12/luke-hot-toy-header-tlj.jpg','bootcamp','2018-05-13 02:19:34','2018-05-13 02:19:34');
 
 
 
