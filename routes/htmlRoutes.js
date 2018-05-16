@@ -16,4 +16,10 @@ app.get("/", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/assets/createUser.html"));
       });
 
+
+      app.get("/login", function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/assets/login.html"));
+      });
+
+
 };

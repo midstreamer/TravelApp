@@ -1,6 +1,9 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
+var session = require("express-session");
+// Requiring passport as we've configured it
+var passport = require("./config/passport");
 
 // Sets up the Express App
 // =============================================================
@@ -15,6 +18,11 @@ app.use(bodyParser.json());
 
 // Static directory
 app.use(express.static(__dirname +"/public/assets"));
+
+//passport functionality
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 var exphbs = require("express-handlebars");
 
