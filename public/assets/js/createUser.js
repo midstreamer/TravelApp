@@ -62,9 +62,12 @@ $(document).ready(function () {
 
     function signUpUser(user) {
         $.post("/api/createuser", user).then(function(data) {
-        //   window.location.replace(data);
+        console.log("trying to replace");
+          window.location = ("/login");
           // If there's an error, handle it by throwing up a bootstrap alert
-        }).catch();
+        }).catch(function(e){
+            console.log(e);
+        });
       }
     
       function handleLoginErr(err) {

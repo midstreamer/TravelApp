@@ -1,3 +1,6 @@
+var bcrypt = require("bcrypt-nodejs");
+
+
 
 module.exports = function (sequelize, DataTypes) {
     var Participants = sequelize.define("Participants", {
