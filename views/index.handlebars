@@ -1,7 +1,7 @@
-<div class="container">
+{{!-- <div class="container"> --}}
     <div class="row">
         <div class="col s12 m12">
-            <div class="card-panel white">
+            <div class="card-panel white" style="display:none">
                 <span class="black-text">World Travel Map
                     <img src="https://thumbs.dreamstime.com/b/hi-detail-blue-vector-political-world-map-illustration-high-cleverly-organized-layers-original-maps-cia-47581570.jpg" class="responsive-image worldMap">
                 </span>
@@ -12,27 +12,28 @@
     <div class="row">
         {{#each user}}
         <div class="col s4 m4">
-            <div class="card white">
+            <div class="card white" id="card1" style="display:none;">
                 <span class="card-content black-text">
-                    <ul class="collection avatar">
-                        <li class="collection-item avatar">
-                            <img src="{{ user_pic_profile }}" alt="" class="profilePic circle responsive-image"> 
-                            <span>
+                    <span class="card-title">{{ user_First_name }} {{ user_Last_name }}</span>
+                    {{!-- <ul class="collection avatar"> --}}
+                        {{!-- <li class="collection-item avatar"> --}}
+                            <img src="{{ user_pic_profile }}" alt="" class="circle-frame"> 
+                            {{!-- <span>
                                 {{ user_First_name }}
                             </span>
                           
                             <span>
                                 {{ user_Last_name }}
-                            </span>
+                            </span> --}}
                         </li> 
-                        <li>
+                        {{!-- <ul> --}}
                             <p class="userPageStory">
                                 {{ user_bio_info }}
                             </p>
-                        </li>
+                        {{!-- </ul> --}}
                         <div class="card-action">
                             
-                            <a href="/api/getuser/{{ client_id }}" target="_blank">Info</a>
+                            <a href="/api/getuser/{{ client_id }}" target="_blank">CHECK OUT PROFILE</a>
                             
                         </div>
                         
@@ -46,7 +47,12 @@
 
 
     </div>
-</div>
+
+    <script>$(document).ready(function () {
+        $('div.card').fadeIn(1500);
+    });</script> 
+
+{{!-- </div> --}}
 
             {{!-- <ul>
                 {{#each Participants}}

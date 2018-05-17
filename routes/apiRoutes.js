@@ -6,50 +6,46 @@ var passport = require("../config/passport");
 // Routes
 // =============================================================
 module.exports = function (app) {
-  // getting users from database
+// HOME PAGE: getting users from database
   app.get("/api/getuser", function (req, res) {
-    db.Participants.findAll({}).then(function (dbParticipants) {
+    db.Participants.findAll({
+      include : {model:db.Blog}
+    }).then(function (dbParticipants) {
       res.render("index", {user: dbParticipants});
       console.log(dbParticipants)
     });
   });
 
+//USER PROFILE PAGE
   app.get("/api/getuser/:id", function(req, res) {
     db.Participants.findOne({
       where: {
         client_id: req.params.id
-      }
+      }, 
+      include:[db.Blog, db.rec_food, db.rec_att, db.rec_eve]
     }).then(function(dbParticipants) {
-      res.render("userProfile", {user: dbParticipants.dataValues});
-          console.log(dbParticipants.dataValues)
+      res.render("userProfile", {user: dbParticipants.dataValues, blog: dbParticipants.dataValues.Blogs, food: dbParticipants.dataValues.rec_foods, attractions: dbParticipants.dataValues.rec_atts, events: dbParticipants.dataValues.rec_eves});
+
+      console.log(dbParticipants.dataValues.rec_eves[0])
+          
     });
   });
 
+//USER BLOG PAGE
   app.get("/api/blog/:id", function(req, res) {
     db.Participants.findOne({
+
       where: {
         client_id: req.params.id
       },
-      include:[db.Blog]
+      include:[db.Blog, db.rec_food, db.rec_att, db.rec_eve]
     }).then(function(dbParticipants) {
-      res.render("blog", {user: dbParticipants.dataValues,
-      blog:dbParticipants.dataValues.Blogs});
+      res.render("blog", {user: dbParticipants.dataValues, blog: dbParticipants.dataValues.Blogs, food: dbParticipants.dataValues.rec_foods, attractions: dbParticipants.dataValues.rec_atts, events: dbParticipants.dataValues.rec_eves});
       
       // console.log(dbParticipants.dataValues.Blogs[0].dataValues.user_StoryList)
     });
   });
 
-  // app.get("/api/blog/:participantid", function(req, res) {
-  //   db.Blog.findOne({
-  //     where: {
-  //       ParticipantClientId: req.params.participantid
-  //     }
-  //   }).then(function(dbBlog) {
-  //     res.render("blog", {story: dbBlog.dataValues});
-  //     console.log(dbBlog.dataValues)
-  //   });
-  // });
-  
   //creating new user 
 
     // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
@@ -70,8 +66,8 @@ module.exports = function (app) {
 // findAll stories for participant 
   app.get("/api/blog", function(req, res) {
     db.Participants.findAll({
-      // client_id:'1',
-      include: [db.Blog]
+
+      include:[db.Blog,db.rec_food,db.rec_att,db.rec_eve]
     }).then(function(dbParticipants) {
       res.json(dbParticipants);
     });
