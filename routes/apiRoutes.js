@@ -87,9 +87,10 @@ module.exports = function (app) {
 
 
   app.post('/api/login',
-  passport.authenticate('local', { successRedirect: '/',
-                                   failureRedirect: '/createuser',
-                                   failureFlash: true })
+  passport.authenticate('local', {
+    successRedirect: "/",
+    // failureFlash: true
+  })
 );
 
     // Route for logging user out
