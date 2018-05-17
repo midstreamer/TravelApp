@@ -85,14 +85,34 @@
                     <div class="card-stacked">
                       <div class="card-content">
                         <p> this btn for new story</p>
-                         <!-- Modal Trigger -->
+                        <!-- Modal Trigger -->
                         <img id='addNewStroy' class="waves-effect modal-trigger" href="#modal1" src="https://firebasestorage.googleapis.com/v0/b/testing-5246f.appspot.com/o/baseline-accessible24px.svg?alt=media&token=7191a298-212c-49d4-80c5-2e6be5ef798d"
                           alt="" class="responsive-img">
                         <!-- Modal Structure -->
                         <div id="modal1" class="modal">
                           <div class="modal-content">
-                            <h4>New Story</h4>
-                            <p>A bunch of text</p>
+                            {{!-- inputs for story  --}}
+                            <div class="row">
+                              <form class="col s12">
+                                <div class="row">
+                                  <div class="input-field col s6">
+                                    <input id="input_text" type="text" data-length="10">
+                                    <label for="input_text">Story Title</label>
+                                  </div>
+                                  <div class="input-field col s6">
+                                    <input id="input_text" type="text" data-length="10">
+                                    <label for="input_text2">Location</label>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="input-field col s12">
+                                    <textarea id="textarea3" class="materialize-textarea" data-length="120"></textarea>
+                                    <label for="textarea2">info</label>
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                            {{!-- --}}
                           </div>
                           <div class="modal-footer">
                             <a class="modal-close waves-effect waves-green btn-flat">Done</a>
