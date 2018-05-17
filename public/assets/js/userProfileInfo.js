@@ -4,8 +4,7 @@ $('.modal').modal();
 //taking input
   function addNewPost () {
     console.log("was clicked ")
- 
-  
+
   
 
   };
