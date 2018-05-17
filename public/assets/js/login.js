@@ -3,6 +3,8 @@ $(document).ready(function() {
     var loginForm = $("form.login");
     var emailInput = $("input#email-input");
     var passwordInput = $("input#password-input");
+
+    
   
     // When the form is submitted, we validate there's an email and password entered
     loginForm.on("submit", function(event) {
@@ -30,10 +32,23 @@ $(document).ready(function() {
         email: email,
         password: password
       }).then(function(data) {
+
+        if(data.search("<title>Passport Authentication</title>")>=0){
+
+     
+            $.get("/login", function(data, status){
+                console.log("Data: " + data + "\nStatus: " + status);
+            });
+        }
+        else if(data.search(" <title>Yaatra Home</title>")>=0){
+            $.get("/api/getuser", function(data, status){
+                console.log("Data: " + data + "\nStatus: " + status);
+            });
+        }
        
-      }).catch(function(err) {
-        console.log(err);
-      });
+      }).fail(function(xhr, status, error) {
+        console.log(xhr +" \n" + status +"\n" +error);
+    });
     }
   
   });

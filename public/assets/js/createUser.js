@@ -1,6 +1,8 @@
 $(document).ready(function () {
     console.log("check")
 
+   
+
     $("#submit").on("click", yo);
     // var participant_pic
 

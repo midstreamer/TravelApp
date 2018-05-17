@@ -6,98 +6,109 @@ var passport = require("../config/passport");
 // Routes
 // =============================================================
 module.exports = function (app) {
-// HOME PAGE: getting users from database
-  app.get("/api/getuser", function (req, res) {
-    db.Participants.findAll({
-      include : {model:db.Blog}
-    }).then(function (dbParticipants) {
-      res.render("index", {user: dbParticipants});
+  // getting users from database
+  app.get("/api/getuser",isLoggedIn, function (req, res) {
+    db.Participants.findAll({}).then(function (dbParticipants) {
+      res.render("index", { user: dbParticipants });
       console.log(dbParticipants)
     });
   });
 
-//USER PROFILE PAGE
-  app.get("/api/getuser/:id", function(req, res) {
+  app.get("/api/getuser/:id",isLoggedIn, function (req, res) {
     db.Participants.findOne({
       where: {
         client_id: req.params.id
-      }, 
-      include:[db.Blog, db.rec_food, db.rec_att, db.rec_eve]
-    }).then(function(dbParticipants) {
-      res.render("userProfile", {user: dbParticipants.dataValues, blog: dbParticipants.dataValues.Blogs, food: dbParticipants.dataValues.rec_foods, attractions: dbParticipants.dataValues.rec_atts, events: dbParticipants.dataValues.rec_eves});
-
-      console.log(dbParticipants.dataValues.rec_eves[0])
-          
+      }
+    }).then(function (dbParticipants) {
+      res.render("userProfile", { user: dbParticipants.dataValues });
+      console.log(dbParticipants.dataValues)
     });
   });
 
-//USER BLOG PAGE
-  app.get("/api/blog/:id", function(req, res) {
+  app.get("/api/blog/:id",isLoggedIn, function (req, res) {
     db.Participants.findOne({
-
       where: {
         client_id: req.params.id
       },
-      include:[db.Blog, db.rec_food, db.rec_att, db.rec_eve]
-    }).then(function(dbParticipants) {
-      res.render("blog", {user: dbParticipants.dataValues, blog: dbParticipants.dataValues.Blogs, food: dbParticipants.dataValues.rec_foods, attractions: dbParticipants.dataValues.rec_atts, events: dbParticipants.dataValues.rec_eves});
-      
+      include: [db.Blog]
+    }).then(function (dbParticipants) {
+      res.render("blog", {
+        user: dbParticipants.dataValues,
+        blog: dbParticipants.dataValues.Blogs
+      });
+
       // console.log(dbParticipants.dataValues.Blogs[0].dataValues.user_StoryList)
     });
   });
 
+  // app.get("/api/blog/:participantid", function(req, res) {
+  //   db.Blog.findOne({
+  //     where: {
+  //       ParticipantClientId: req.params.participantid
+  //     }
+  //   }).then(function(dbBlog) {
+  //     res.render("blog", {story: dbBlog.dataValues});
+  //     console.log(dbBlog.dataValues)
+  //   });
+  // });
+
   //creating new user 
 
-    // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
+  // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/createuser", function (req, res) {
     db.Participants.create(req.body
-    ).then(function() {
+    ).then(function () {
 
       res.send(200);
-    }).catch(function(err) {
+    }).catch(function (err) {
       console.log(err);
       res.json(err);
       // res.status(422).json(err.errors[0].message);
     });
   });
 
-// findAll stories for participant 
-  app.get("/api/blog", function(req, res) {
+  // findAll stories for participant 
+  app.get("/api/blog",isLoggedIn, function (req, res) {
     db.Participants.findAll({
-
-      include:[db.Blog,db.rec_food,db.rec_att,db.rec_eve]
-    }).then(function(dbParticipants) {
+      // client_id:'1',
+      include: [db.Blog]
+    }).then(function (dbParticipants) {
       res.json(dbParticipants);
     });
   });
 
-  app.get("/app/:id",function (req, res) {
+  app.get("/app/:id", function (req, res) {
 
   })
 
-
-
-  
 
 
   app.post('/api/login',
-  passport.authenticate('local', {
-    successRedirect: "/",
-    // failureFlash: true
-  })
+  passport.authenticate('local', { successRedirect: '/api/getuser',
+                                   failureRedirect: '/createuser',
+                                   failureFlash: true })
 );
 
-    // Route for logging user out
-    app.get("/logout", function(req, res) {
-      req.logout();
-      res.redirect("/");
-    });
 
 
-    // Route for getting some data about our user to be used client side
-  app.get("/api/user_data", function(req, res) {
+
+
+
+
+
+  // app.post('/api/login',
+  // passport.authenticate('local'),
+  // function(req, res) {
+  //   // If this function gets called, authentication was successful.
+  //   // `req.user` contains the authenticated user.
+  //   console.log("aaaaaaakdljaljfdlsfjsfjlsfjaslfjsadfjlasdjfsajfsakfld;sajflajsfdajsfa;djalfkjal" +req.user);
+  // });
+
+
+  // Route for getting some data about our user to be used client side
+  app.get("/api/user_data", function (req, res) {
     if (!req.user) {
       // The user is not logged in, send back an empty object
       res.json({});
@@ -111,6 +122,14 @@ module.exports = function (app) {
       });
     }
   });
+
+
+  function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated())
+        return next();
+
+    res.redirect('/login');
+}
 
 
 }
