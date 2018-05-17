@@ -6,53 +6,52 @@ var passport = require("../config/passport");
 // Routes
 // =============================================================
 module.exports = function (app) {
-  // getting users from database
-  app.get("/api/getuser",isLoggedIn, function (req, res) {
-    db.Participants.findAll({}).then(function (dbParticipants) {
+  // HOME PAGE: getting users from database
+  app.get("/api/getuser", function (req, res) {
+    db.Participants.findAll({
+      include: { model: db.Blog }
+    }).then(function (dbParticipants) {
       res.render("index", { user: dbParticipants });
       console.log(dbParticipants)
     });
   });
 
-  app.get("/api/getuser/:id",isLoggedIn, function (req, res) {
-    db.Participants.findOne({
-      where: {
-        client_id: req.params.id
-      }
-    }).then(function (dbParticipants) {
-      res.render("userProfile", { user: dbParticipants.dataValues });
-      console.log(dbParticipants.dataValues)
-    });
-  });
-
-  app.get("/api/blog/:id",isLoggedIn, function (req, res) {
+  //USER PROFILE PAGE
+  app.get("/api/getuser/:id", function (req, res) {
     db.Participants.findOne({
       where: {
         client_id: req.params.id
       },
-      include: [db.Blog]
+      include: [db.Blog, db.rec_food, db.rec_att, db.rec_eve]
     }).then(function (dbParticipants) {
-      res.render("blog", {
-        user: dbParticipants.dataValues,
-        blog: dbParticipants.dataValues.Blogs
-      });
+      res.render("userProfile", { user: dbParticipants.dataValues, blog: dbParticipants.dataValues.Blogs, food: dbParticipants.dataValues.rec_foods, attractions: dbParticipants.dataValues.rec_atts, events: dbParticipants.dataValues.rec_eves });
+
+      console.log(dbParticipants.dataValues.rec_eves[0])
+
+    });
+  });
+
+  //USER BLOG PAGE
+  app.get("/api/blog/:id", function (req, res) {
+    db.Participants.findOne({
+      where: {
+        client_id: req.params.id
+      },
+      include: [db.Blog, db.rec_food, db.rec_att, db.rec_eve]
+    }).then(function (dbParticipants) {
+      res.render("blog", { user: dbParticipants.dataValues, blog: dbParticipants.dataValues.Blogs, food: dbParticipants.dataValues.rec_foods, attractions: dbParticipants.dataValues.rec_atts, events: dbParticipants.dataValues.rec_eves });
 
       // console.log(dbParticipants.dataValues.Blogs[0].dataValues.user_StoryList)
     });
   });
 
-  // app.get("/api/blog/:participantid", function(req, res) {
-  //   db.Blog.findOne({
-  //     where: {
-  //       ParticipantClientId: req.params.participantid
-  //     }
-  //   }).then(function(dbBlog) {
-  //     res.render("blog", {story: dbBlog.dataValues});
-  //     console.log(dbBlog.dataValues)
-  //   });
-  // });
+  //creating new story blog need some work need to include id of the person
+  app.post("/api/blog/Story", function (req, res) {
+    console.log(req.body)
+    console.log("here")
+    res.redirect("/api/getuser/")
 
-  //creating new user 
+  })
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
@@ -70,10 +69,10 @@ module.exports = function (app) {
   });
 
   // findAll stories for participant 
-  app.get("/api/blog",isLoggedIn, function (req, res) {
+  app.get("/api/blog", function (req, res) {
     db.Participants.findAll({
-      // client_id:'1',
-      include: [db.Blog]
+
+      include: [db.Blog, db.rec_food, db.rec_att, db.rec_eve]
     }).then(function (dbParticipants) {
       res.json(dbParticipants);
     });
@@ -96,15 +95,11 @@ module.exports = function (app) {
 
 
 
-
-
-  // app.post('/api/login',
-  // passport.authenticate('local'),
-  // function(req, res) {
-  //   // If this function gets called, authentication was successful.
-  //   // `req.user` contains the authenticated user.
-  //   console.log("aaaaaaakdljaljfdlsfjsfjlsfjaslfjsadfjlasdjfsajfsakfld;sajflajsfdajsfa;djalfkjal" +req.user);
-  // });
+  // Route for logging user out
+  app.get("/logout", function (req, res) {
+    req.logout();
+    res.redirect("/");
+  });
 
 
   // Route for getting some data about our user to be used client side
