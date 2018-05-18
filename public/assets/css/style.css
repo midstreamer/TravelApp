@@ -48,11 +48,18 @@ body{
   background-color: blanchedalmond;
   position: relative;
   top: 100px;
-  padding: 20px;
+  padding: 60px;
   width: 600px;
   border-radius: 25px;
 }
-
+#loginform {
+  position: relative;
+  left: 90px;
+}
+#textform{
+position: relative;
+left: 150px;
+}
 .profilePic {
   height: 200px;
   width: 200px;
@@ -65,17 +72,17 @@ width: 100%;
 }
 
 #submit {
-  background-color: rgb(207, 204, 204);
-  color: black;
+  background-color:#26a69a;
+  color: white;
   outline-color: black;
   position: relative;
-  left: 145px;
+  left: 20px;
 }
 #createUser {
   background-color: blanchedalmond;
   position: relative;
   align-content: center;
-  top: -10px;
+  top: -25px;
   padding: 20px;
   width: 500px;
   border-radius: 25px;
