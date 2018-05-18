@@ -94,6 +94,21 @@ ParticipantClientId:req.user
       res.json(dbParticipants);
     });
   });
+
+//new logic for homepage search
+app.get("/api/homePage/search", function (req, res) {
+  db.user_location.findAll({
+    where :{
+      user_location:'US' 
+    },
+    include:[db.Participants],
+  }).then(function (dbUser_location) {
+res.render("userProfile", { dbUser_location});
+console.log(dbUser_location)
+    // console.log(dbParticipants.dataValues.Blogs[0].dataValues.user_StoryList)
+  });
+});
+
   app.get("/app/:id", function (req, res) {
   })
   app.post('/api/login',
