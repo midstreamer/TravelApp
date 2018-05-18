@@ -5,7 +5,7 @@ var passport = require("../config/passport");
 // =============================================================
 module.exports = function (app) {
   // HOME PAGE: getting users from database
-  app.get("/api/getuser", function (req, res) {
+  app.get("/api/getuser",isLoggedIn, function (req, res) {
     console.log(req.user);
     db.Participants.findAll({
       include: { model: db.Blog }
@@ -15,7 +15,7 @@ module.exports = function (app) {
     });
   });
   //USER PROFILE PAGE
-  app.get("/api/getuser/:id", function (req, res) {
+  app.get("/api/getuser/:id",isLoggedIn, function (req, res) {
     db.Participants.findOne({
       where: {
         client_id: req.params.id
@@ -27,7 +27,7 @@ module.exports = function (app) {
     });
   });
   //USER BLOG PAGE
-  app.get("/api/blog/:id", function (req, res) {
+  app.get("/api/blog/:id",isLoggedIn, function (req, res) {
     db.Participants.findOne({
       where: {
         client_id: req.params.id
@@ -55,6 +55,7 @@ module.exports = function (app) {
 
 
   //creating new story blog need some work need to include id of the person
+  ///ADD ISLOGGEDIN
   app.post("/api/blog/Story", function (req, res) {
     console.log(req.body)
     console.log("here")
@@ -74,15 +75,16 @@ module.exports = function (app) {
     });
   });
   // findAll stories for participant 
-  app.get("/api/blog", function (req, res) {
-    db.Participants.findAll({
-      include: [db.Blog, db.rec_food, db.rec_att, db.rec_eve]
-    }).then(function (dbParticipants) {
-      res.json(dbParticipants);
-    });
-  });
-  app.get("/app/:id", function (req, res) {
-  })
+  // app.get("/api/blog",isLoggedIn, function (req, res) {
+  //   db.Participants.findAll({
+  //     include: [db.Blog, db.rec_food, db.rec_att, db.rec_eve]
+  //   }).then(function (dbParticipants) {
+  //     res.json(dbParticipants);
+  //   });
+  // });
+  
+
+
   app.post('/api/login',
   passport.authenticate('local', { successRedirect: '/api/getuser',
                                    failureRedirect: '/login',
@@ -91,23 +93,23 @@ module.exports = function (app) {
   // Route for logging user out
   app.get("/logout", function (req, res) {
     req.logout();
-    res.redirect("/");
+    res.send(200);
   });
-  // Route for getting some data about our user to be used client side
-  app.get("/api/user_data", function (req, res) {
-    if (!req.user) {
-      // The user is not logged in, send back an empty object
-      res.json({});
-    }
-    else {
-      // Otherwise send back the user's email and id
-      // Sending back a password, even a hashed password, isn't a good idea
-      res.json({
-        email: req.user.email,
-        id: req.user.id
-      });
-    }
-  });
+  // // Route for getting some data about our user to be used client side
+  // app.get("/api/user_data", function (req, res) {
+  //   if (!req.user) {
+  //     // The user is not logged in, send back an empty object
+  //     res.json({});
+  //   }
+  //   else {
+  //     // Otherwise send back the user's email and id
+  //     // Sending back a password, even a hashed password, isn't a good idea
+  //     res.json({
+  //       email: req.user.email,
+  //       id: req.user.id
+  //     });
+  //   }
+  // });
   function isLoggedIn(req, res, next) {
     if (req.isAuthenticated())
         return next();
