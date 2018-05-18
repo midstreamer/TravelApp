@@ -5,6 +5,42 @@
  *
  * Made By MaterializeCSS.com
  */
+
+ @import 'https://fonts.googleapis.com/css?family=Lato';
+
+ body {
+   font-family: Lato;
+   font-size: 15px;
+ }
+ 
+ * {
+   -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+           box-sizing: border-box;
+ }
+ 
+ h1 {
+   font-size: 1.5em;
+   font-weight: 400;
+   text-align: center;
+ }
+ 
+ #chartdiv {
+   max-width: 1100px;
+   height: 400px;
+   border: 1px solid #ddd;
+   margin: 0 auto;
+ }
+ 
+ #info {
+   max-width: 1100px;
+   border: 1px solid #ddd;
+   margin: 10px auto;
+   padding: 5px 8px;
+ }
+
+
+
 body{
   background-color: rgb(14,28,49); background: -moz-radial-gradient(center, ellipse cover, rgba(14,28,49,1) 20%, rgba(54,76,108,1) 100%); background: -webkit-radial-gradient(center, ellipse cover, rgba(14,28,49,1) 20%,rgba(54,76,108,1) 100%); background: radial-gradient(ellipse at center, rgba(14,28,49,1) 20%,rgba(54,76,108,1) 100%);top:0px; left:0px; text-align:initial; font-weight:400; font-style:normal; text-decoration:none; width:100%; height:100%;
 }
@@ -48,11 +84,19 @@ body{
   background-color: blanchedalmond;
   position: relative;
   top: 100px;
-  padding: 20px;
+  padding: 60px;
   width: 600px;
   border-radius: 25px;
 }
-
+#loginform {
+  position: relative;
+  left: 90px;
+  width: 200px;
+}
+#textform{
+position: relative;
+left: 150px;
+}
 .profilePic {
   height: 200px;
   width: 200px;
@@ -65,17 +109,17 @@ width: 100%;
 }
 
 #submit {
-  background-color: rgb(207, 204, 204);
-  color: black;
+  background-color:#26a69a;
+  color: white;
   outline-color: black;
   position: relative;
-  left: 145px;
+  left: 20px;
 }
 #createUser {
   background-color: blanchedalmond;
   position: relative;
   align-content: center;
-  top: -10px;
+  top: -25px;
   padding: 20px;
   width: 500px;
   border-radius: 25px;

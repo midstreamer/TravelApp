@@ -2,54 +2,134 @@
 <html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
   <title>Yaatra Home</title> {{!-- jq --}}
-        <!-- CSS  -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    {{!-- <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet"> --}}
-    <script src="https://code.jquery.com/jquery.js"></script>
-    {{!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    {{!-- <script src="./js/userProfileInfo.js"></script> --}}
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" /> {{!--
+  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet"> --}}
+  <script src="https://code.jquery.com/jquery.js"></script> {{!--
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> --}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> {{!--
+  <script src="../../public/assets/js/userProfileInfo.js"></script> --}}
+  <script src="https://www.amcharts.com/lib/3/ammap.js"></script>
+<script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+  
 
 </head>
 
-    <title>Yaatra Homepage</title>
+<title>Yaatra Homepage</title>
 
 </head>
 
 <body>
-    <nav class="#f50057 pink accent-3" role="navigation">
-      <div class="nav-wrapper container"><a id="logo-container" href="..\public\assets\landing.html" class="brand-logo">yaatra</a>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="/landing.html">Home</a></li>
-          <li><a href="/createUser.html">Create User</a></li>
-          <button id="logout">Logout</button>
-        </ul>
-  
-        <ul id="nav-mobile" class="sidenav">
-          <li><a href="#">Navbar Link</a></li>
-        </ul>
-        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a><br>
-      </div>
-    </nav>
-    
-        {{{body}}}
+  <nav class="#f50057 pink accent-3" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="..\public\assets\landing.html" class="brand-logo">yaatra</a>
+      <ul class="right hide-on-med-and-down">
+        <li>
+          <a href="/landing.html">Home</a>
+        </li>
+        <li>
+          <a href="/createUser.html">Create User</a>
+        </li>
+        <button id="logout">Logout</button>
+      </ul>
 
-<script>$(document).ready(function () {
+      <ul id="nav-mobile" class="sidenav">
+        <li>
+          <a href="#">Navbar Link</a>
+        </li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+      <br>
+    </div>
+  </nav>
+
+  {{{body}}}
+
+  <script>$(document).ready(function () {
       $('div.icon-block').fadeIn(2200);
       $('div.card-panel').fadeIn(2200);
       $('div.card-panel').fadeIn(2200);
-      
-  });</script> 
 
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      $("#logout").on("click", function () {
+
+        $.get("/logout", function (data) {
+          console.log("back from logout");
+          window.location = ("/");
+        });
+      });
+
+
+
+
+      var map = AmCharts.makeChart("chartdiv", {
+        "type": "map",
+        "theme": "light",
+        "projection": "eckert3",
+        "dataProvider": {
+          "map": "worldLow",
+          "getAreasFromMap": true
+        },
+        "areasSettings": {
+          "selectedColor": "#CC0000",
+          "selectable": true
+        },
+        /**
+         * Add click event to track country selection/unselection
+         */
+        "listeners": [{
+          "event": "clickMapObject",
+          "method": function (e) {
+
+            // Ignore any click not on area
+            if (e.mapObject.objectType !== "MapArea")
+              return;
+
+            var area = e.mapObject;
+
+            // Toggle showAsSelected
+            area.showAsSelected = !area.showAsSelected;
+            e.chart.returnInitialColor(area);
+
+            // Update the list
+            document.getElementById("selected").innerHTML = JSON.stringify(getSelectedCountries());
+          }
+        }]
+      });
+
+      /**
+       * Function which extracts currently selected country list.
+       * Returns array consisting of country ISO2 codes
+       */
+      function getSelectedCountries() {
+        var selected = [];
+        for (var i = 0; i < map.dataProvider.areas.length; i++) {
+          if (map.dataProvider.areas[i].showAsSelected)
+            selected.push(map.dataProvider.areas[i].id);
+        }
+        return selected;
+      }
+
+    });</script>
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="/js/materialize/materialize.js"></script>
+<<<<<<< HEAD
   <script src="/js/materialize/init.js"></script>
 <script src="/js/userProfileInfo.js"></script>
 <script src="/js/myBlog.js"></script>
+=======
+  <script src="/js/materialize/init.js"></script> {{!--
+  <script src="/js/userProfile
+Info.js"></script> --}}
+>>>>>>> 49d5fdd1fcf095be5dc70ef95bf608ce07b703ff
 </body>
+
 </html>
