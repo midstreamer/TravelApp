@@ -26,6 +26,18 @@ module.exports = function (app) {
       console.log(dbParticipants.dataValues.rec_eves[0])
     });
   });
+  //MYUSER PROFILE PAGE
+  app.get("/api/myprofile/:id", isLoggedIn, function (req, res) {
+    db.Participants.findOne({
+      where: {
+        client_id: req.params.id
+      },
+      include: [db.Blog, db.rec_food, db.rec_att, db.rec_eve]
+    }).then(function (dbParticipants) {
+      res.render("myUserProfile", { user: dbParticipants.dataValues, blog: dbParticipants.dataValues.Blogs, food: dbParticipants.dataValues.rec_foods, attractions: dbParticipants.dataValues.rec_atts, events: dbParticipants.dataValues.rec_eves });
+      console.log(dbParticipants.dataValues.rec_eves[0])
+    });
+  });
   //USER BLOG PAGE
   app.get("/api/blog/:id",isLoggedIn, function (req, res) {
     db.Participants.findOne({
@@ -97,14 +109,18 @@ ParticipantClientId:req.user
 
 //new logic for homepage search
 app.get("/api/homePage/search", function (req, res) {
+  
   db.user_location.findAll({
     where :{
-      user_location:'US' 
+      user_location:req.body 
     },
     include:[db.Participants],
   }).then(function (dbUser_location) {
-res.render("userProfile", { dbUser_location});
-console.log(dbUser_location)
+    res.json(dbUser_location);
+
+    
+// res.render("index", { dbUser_location});
+// console.log(dbUser_location)
     // console.log(dbParticipants.dataValues.Blogs[0].dataValues.user_StoryList)
   });
 });
