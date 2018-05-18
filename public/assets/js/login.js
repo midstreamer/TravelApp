@@ -36,14 +36,10 @@ $(document).ready(function() {
         if(data.search("<title>Passport Authentication</title>")>=0){
 
      
-            $.get("/login", function(data, status){
-                console.log("Data: " + data + "\nStatus: " + status);
-            });
+          window.location = ("/login");
         }
         else if(data.search(" <title>Yaatra Home</title>")>=0){
-            $.get("/api/getuser", function(data, status){
-                console.log("Data: " + data + "\nStatus: " + status);
-            });
+            window.location = ("/api/getuser");
         }
        
       }).fail(function(xhr, status, error) {
