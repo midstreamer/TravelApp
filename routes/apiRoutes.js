@@ -8,6 +8,8 @@ var passport = require("../config/passport");
 module.exports = function (app) {
   // HOME PAGE: getting users from database
   app.get("/api/getuser", function (req, res) {
+
+    console.log(req.user);
     db.Participants.findAll({
       include: { model: db.Blog }
     }).then(function (dbParticipants) {
