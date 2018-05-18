@@ -34,8 +34,6 @@ body{
   left: 125px;
 }
 
-
-
 .userPageStory {
   position: relative;
   left: -55px;
@@ -46,7 +44,14 @@ body{
   line-height: 1.4em;
   padding: 3em;
 }
-
+#login {
+  background-color: blanchedalmond;
+  position: relative;
+  top: 100px;
+  padding: 20px;
+  width: 600px;
+  border-radius: 25px;
+}
 
 .profilePic {
   height: 200px;
