@@ -34,6 +34,7 @@ module.exports = function (app) {
   //USER BLOG PAGE
   app.get("/api/blog/:id", function (req, res) {
     db.Participants.findOne({
+
       where: {
         client_id: req.params.id
       },
@@ -78,11 +79,11 @@ module.exports = function (app) {
   });
   app.get("/api/newstufff", function (req, res) {
     db.Participants.findAll({
-      where:{user_First_name : req.user.user_First_name},
-      // include:[db.blog,]
+      // where:{user_First_name : req.user},
+      // // include:[db.blog,]
 
     }).then(function (data) {
-      console.log(data)
+      console.log(req.user)
       res.json(data);
     });
   });
@@ -97,15 +98,11 @@ module.exports = function (app) {
 
 
   app.post('/api/login',
-  passport.authenticate('local', { successRedirect: '/api/getuser',
-                                   failureRedirect: '/createuser',
-                                   failureFlash: true })
-);
-
-
-
-
-
+    passport.authenticate('local', {
+      successRedirect: "/",
+      // failureFlash: true
+    })
+  );
 
   // Route for logging user out
   app.get("/logout", function (req, res) {
@@ -129,14 +126,6 @@ module.exports = function (app) {
       });
     }
   });
-
-
-  function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated())
-        return next();
-
-    res.redirect('/login');
-}
 
 
 }
