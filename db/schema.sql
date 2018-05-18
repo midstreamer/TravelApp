@@ -9,7 +9,6 @@ CREATE TABLE `Blogs` (
   KEY `ParticipantClientId` (`ParticipantClientId`),
   CONSTRAINT `blogs_ibfk_1` FOREIGN KEY (`ParticipantClientId`) REFERENCES `Participants` (`client_id`) ON DELETE NO ACTION ON UPDATE CASCADE
 );
-
 CREATE TABLE `Participants` (
   `client_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_First_name` varchar(255) DEFAULT NULL,
@@ -42,7 +41,6 @@ CREATE TABLE `rec_eves` (
   KEY `ParticipantClientId` (`ParticipantClientId`),
   CONSTRAINT `rec_eves_ibfk_1` FOREIGN KEY (`ParticipantClientId`) REFERENCES `Participants` (`client_id`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ;
-
 CREATE TABLE `rec_foods` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_rec_food` varchar(10000) DEFAULT NULL,
@@ -53,7 +51,6 @@ CREATE TABLE `rec_foods` (
   KEY `ParticipantClientId` (`ParticipantClientId`),
   CONSTRAINT `rec_foods_ibfk_1` FOREIGN KEY (`ParticipantClientId`) REFERENCES `Participants` (`client_id`) ON DELETE NO ACTION ON UPDATE CASCADE
 ); 
-
 CREATE TABLE `user_locations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_location` varchar(10000) DEFAULT NULL,
@@ -64,8 +61,6 @@ CREATE TABLE `user_locations` (
   KEY `ParticipantClientId` (`ParticipantClientId`),
   CONSTRAINT `user_locations_ibfk_1` FOREIGN KEY (`ParticipantClientId`) REFERENCES `Participants` (`client_id`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ;
-
-
 CREATE TABLE `location_food` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
@@ -76,8 +71,6 @@ CREATE TABLE `location_food` (
   CONSTRAINT `location_food_ibfk_1` FOREIGN KEY (`client_id_food`) REFERENCES `user_locations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `location_food_ibfk_2` FOREIGN KEY (`ParticipantClientId`) REFERENCES `rec_foods` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
-
-
 CREATE TABLE `participant_food` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
