@@ -33,6 +33,8 @@ $(document).ready(function() {
         password: password
       }).then(function(data) {
 
+        console.log(data);
+
         if(data.search("<title>Passport Authentication</title>")>=0){
 
      
