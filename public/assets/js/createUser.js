@@ -65,7 +65,7 @@ $(document).ready(function () {
     function signUpUser(user) {
         $.post("/api/createuser", user).then(function(data) {
         
-        //   window.location = ("/login");
+          window.location = ("/login");
           // If there's an error, handle it by throwing up a bootstrap alert
         }).catch(function(e){
             console.log(e);
