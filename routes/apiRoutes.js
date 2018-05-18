@@ -55,20 +55,12 @@ module.exports = function (app) {
 
 
   //creating new story blog need some work need to include id of the person
-<<<<<<< HEAD
-  // app.post("/api/blog/Story", function (req, res) {
-  //   console.log(req.body)
-  //   console.log("here")
-  //   res.redirect("/api/getuser/")
-  // })
-=======
   ///ADD ISLOGGEDIN
   app.post("/api/blog/Story", function (req, res) {
     console.log(req.body)
     console.log("here")
     res.redirect("/api/getuser/")
   })
->>>>>>> 49d5fdd1fcf095be5dc70ef95bf608ce07b703ff
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
