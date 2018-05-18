@@ -65,10 +65,11 @@ width: 100%;
 }
 
 #submit {
-  background-color: #f50057;
-  outline-color: white;
+  background-color: rgb(207, 204, 204);
+  color: black;
+  outline-color: black;
   position: relative;
-  left: 180px;
+  left: 145px;
 }
 #createUser {
   background-color: blanchedalmond;
