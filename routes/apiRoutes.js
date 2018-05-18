@@ -55,24 +55,15 @@ module.exports = function (app) {
 
 
   //creating new story blog need some work need to include id of the person
-  app.post("/api/blog/Story", function (req, res) {
-    console.log(req.body)
-    console.log("here")
-    res.redirect("/api/getuser/")
-  })
+  // app.post("/api/blog/Story", function (req, res) {
+  //   console.log(req.body)
+  //   console.log("here")
+  //   res.redirect("/api/getuser/")
+  // })
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
-  app.post("/api/createuser", function (req, res) {
-    db.Participants.create(req.body
-    ).then(function () {
-      res.send(200);
-    }).catch(function (err) {
-      console.log(err);
-      res.json(err);
-      // res.status(422).json(err.errors[0].message);
-    });
-  });
+  
   // findAll stories for participant 
   app.get("/api/blog", function (req, res) {
     db.Participants.findAll({
@@ -113,20 +104,23 @@ module.exports = function (app) {
         return next();
     res.redirect('/login');
 }
+//Creating new sotry and insirting to location and to blog tables LATER will need to update ParticipantClientId to ParticipantClientId:req.user
 app.post("/api/blog/Story", function (req, res) {
-  // console.log(req.user)
+  // console.log(req.body)
+  db.Blog.create({
+user_StoryList:req.body.user_StoryList,
+user_title:req.body.user_title,
+ParticipantClientId:'2'
+// ParticipantClientId:req.user --- if logged in
+  })
+  ,
   db.user_location.create({
-ParticipantClientId:req.user,
-user_location:req.body.newStoryLocation,
-user_title:req.body.newStoryTitle,
-[db.Blog]:{
-  user_story:req.body.newStoryContent,
-  ParticipantClientId:req.user
-}
-// include: [db.Blog, db.rec_food, db.rec_att, db.rec_eve]
-  }).then(function (dataTO) {
-    console.log(dataTO)
-    res.redirect("/api/blog/Story")
+    user_location:req.body.user_location,
+    ParticipantClientId:'2',
+    // ParticipantClientId:req.user --- if logged in
+      })
+  .then(function (data) {
+    res.json(data)
   });
 });
 
