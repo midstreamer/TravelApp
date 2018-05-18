@@ -34,7 +34,6 @@ module.exports = function (app) {
   //USER BLOG PAGE
   app.get("/api/blog/:id", function (req, res) {
     db.Participants.findOne({
-
       where: {
         client_id: req.params.id
       },
@@ -98,11 +97,15 @@ module.exports = function (app) {
 
 
   app.post('/api/login',
-    passport.authenticate('local', {
-      successRedirect: "/",
-      // failureFlash: true
-    })
-  );
+  passport.authenticate('local', { successRedirect: '/api/getuser',
+                                   failureRedirect: '/createuser',
+                                   failureFlash: true })
+);
+
+
+
+
+
 
   // Route for logging user out
   app.get("/logout", function (req, res) {
@@ -126,6 +129,14 @@ module.exports = function (app) {
       });
     }
   });
+
+
+  function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated())
+        return next();
+
+    res.redirect('/login');
+}
 
 
 }
