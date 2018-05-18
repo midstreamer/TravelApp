@@ -60,7 +60,6 @@ module.exports = function (app) {
   app.post("/api/createuser", function (req, res) {
     db.Participants.create(req.body
     ).then(function () {
-
       res.send(200);
     }).catch(function (err) {
       console.log(err);
@@ -73,12 +72,25 @@ module.exports = function (app) {
   app.get("/api/blog", function (req, res) {
     db.Participants.findAll({
 
-      include: [db.Blog, db.rec_food, db.rec_att, db.rec_eve]
+      include: [db.Blog, db.rec_food, db.rec_att, db.rec_eve,db.user_location]
     }).then(function (dbParticipants) {
       res.json(dbParticipants);
     });
   });
+  app.get("/api/newstufff", function (req, res) {
+    db.Participants.findAll({
+      where:{user_First_name : req.user.user_First_name},
+      // include:[db.blog,]
 
+    }).then(function (data) {
+      console.log(data)
+      res.json(data);
+    });
+  });
+// 
+// where:{
+//   user_location: "houston"
+// },include:[db.Participants,db.rec_food]
   app.get("/app/:id", function (req, res) {
 
   })

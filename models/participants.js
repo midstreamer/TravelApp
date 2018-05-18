@@ -42,13 +42,16 @@ module.exports = function (sequelize, DataTypes) {
         });
 
         //Users rec 
-                Participants.hasMany(models.rec_food, {
+                Participants.belongsToMany(models.rec_food, {through:"participant_food",foreignKey:"ParticipantClientId",
             onDelete: "cascade"
         });
         Participants.hasMany(models.rec_att, {
             onDelete: "cascade"
         });
         Participants.hasMany(models.rec_eve, {
+            onDelete: "cascade"
+        });
+        Participants.hasMany(models.user_location, {
             onDelete: "cascade"
         });
         // 

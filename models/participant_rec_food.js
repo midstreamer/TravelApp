@@ -11,8 +11,10 @@ module.exports = function (sequelize, DataTypes) {
           allowNull: false
         }
       });
-    };
 
+      rec_food.belongsToMany(models.user_location,{through:"location_food",foreignKey:"ParticipantClientId"}
+    
+      )};
     
 	return rec_food;
 };
