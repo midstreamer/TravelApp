@@ -97,16 +97,20 @@ module.exports = function (app) {
         return next();
     res.redirect('/login');
 }
-app.get("/api/test", function (req, res) {
-  console.log(req.user)
-  db.Participants.findOne({
-// ParticipantClientId
-// user_location:req.body.loationInfo,
-// user_title:req.body.titleInfo,
-// user_story:req.body.storyInfo
-    // include: [db.Blog, db.rec_food, db.rec_att, db.rec_eve]
-  }).then(function (dbParticipants) {
-    res.json(dbParticipants);
+app.post("/api/blog/Story", function (req, res) {
+  // console.log(req.user)
+  db.user_location.create({
+ParticipantClientId:req.user,
+user_location:req.body.newStoryLocation,
+user_title:req.body.newStoryTitle,
+[db.Blog]:{
+  user_story:req.body.newStoryContent,
+  ParticipantClientId:req.user
+}
+// include: [db.Blog, db.rec_food, db.rec_att, db.rec_eve]
+  }).then(function (dataTO) {
+    console.log(dataTO)
+    res.redirect("/api/blog/Story")
   });
 });
 

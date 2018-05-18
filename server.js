@@ -14,7 +14,7 @@ var cookieParser = require("cookie-parser");
 // Sets up the Express App
 // =============================================================
 var app = express();
-var PORT = process.env.PORT || 3333;
+var PORT = process.env.PORT || 3334;
 //var exphbs = require("express-handlebars");
 
 
