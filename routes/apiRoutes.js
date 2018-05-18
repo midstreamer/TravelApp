@@ -38,6 +38,22 @@ module.exports = function (app) {
       // console.log(dbParticipants.dataValues.Blogs[0].dataValues.user_StoryList)
     });
   });
+
+  //PERSONAL USER BLOG PAGE
+  app.get("/api/blog/myblog/:id", function (req, res) {
+    db.Participants.findOne({
+      where: {
+        client_id: req.params.id
+      },
+      include: [db.Blog, db.rec_food, db.rec_att, db.rec_eve]
+    }).then(function (dbParticipants) {
+      res.render("myBlog", { user: dbParticipants.dataValues, blog: dbParticipants.dataValues.Blogs, food: dbParticipants.dataValues.rec_foods, attractions: dbParticipants.dataValues.rec_atts, events: dbParticipants.dataValues.rec_eves });
+
+      // console.log(dbParticipants.dataValues.Blogs[0].dataValues.user_StoryList)
+    });
+  });
+
+
   //creating new story blog need some work need to include id of the person
   ///ADD ISLOGGEDIN
   app.post("/api/blog/Story", function (req, res) {
