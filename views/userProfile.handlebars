@@ -83,50 +83,9 @@
                     <div class="card-image">
                       <img src="https://cdn.pixabay.com/photo/2018/05/13/17/18/paris-3397173_1280.jpg" alt="" class="card-image responsive-img storyImg">
                     </div>
-                    {{!-- </div> --}} {{!--
-                  <div class="col s8"> --}}
-                    <div class="card-stacked">
-                      <div class="card-content">
-                        <p> this btn for new story</p>
-                        <!-- Modal Trigger -->
-                        <img id='addNewStroy' class="waves-effect modal-trigger" href="#modal1" src="https://firebasestorage.googleapis.com/v0/b/testing-5246f.appspot.com/o/baseline-accessible24px.svg?alt=media&token=7191a298-212c-49d4-80c5-2e6be5ef798d"
-                          alt="" class="responsive-img">
-                        <!-- Modal Structure -->
-                        <div id="modal1" class="modal">
-                          <div class="modal-content">
-                            {{!-- inputs for story --}}
-                            <div class="row">
-                              <form class="col s12" action="/api/blog/Story" method="POST">
-                                <div class="row">
-                                  <div class="input-field col s6">
-                                    <input id="input_text" type="text" name="Title" data-length="10">
-                                    <label for="input_text">Story Title</label>
-                                  </div>
-                                  <div class="input-field col s6">
-                                    <input id="input_text" type="text" name="Location" data-length="10">
-                                    <label for="input_text2">Location</label>
-                                  </div>
-                                </div>
-                                <div class="row">
-                                  <div class="input-field col s12">
-                                    <textarea id="textarea3" class="materialize-textarea" name="Story" data-length="120"></textarea>
-                                    <label for="textarea2">info</label>
-                                  </div>
-                                </div>
-                                <div class="modal-footer">
-                                  <input class="modal-close waves-effect waves-green btn-flat" type="submit" value="Submit">
-                                </div>
-                              </form>
-                            </div>
-                            {{!-- --}}
-                          </div>
 
-                        </div>
-                        {{!-- --}}
-
+                      <div class="card-stacked">
                         <h4 class="card-title">Story Title
-
-
                           <i class="material-icons right">more_vert</i>
                         </h4>
                         {{#each blog}} {{ dataValues.user_StoryList }} {{/each}}
@@ -135,38 +94,11 @@
                         <a href="/api/blog/{{ user.client_id }}" target="_blank">Read Story</a>
                       </div>
                     </div>
-                    {{!-- </div> --}}
                 </div>
               </div>
             </div>
           </section>
 
-          {{!--
-          <div class="row">
-            <div class="col s12 m12">
-              <div class="card-panel white">
-                <span class="black-text">Stories
-                  <ul class="collection">
-                    <li class="collection-item avatar">
-                      <img src="" alt="" class="circle">
-                      <span>Story Title</span>
-                    </li>
-                    <li>
-                      <p class="userPageStory">I'm a cool story. I like to talk about myself. I did some really cool things. I like to talk about
-                        the really cool things that I did. Please. Please Read me.</p>
-                    </li>
-                    <div class="card-action">
-
-                      <a href="/api/blog/{{ user.client_id }}" target="_blank">Read Story</a>
-
-                    </div>
-                  </ul>
-                </span>
-              </div>
-            </div>
-          </div> --}}
-
-          
           <div class="row">
             <div class="col s12">
               <div class="card-panel white">
@@ -224,5 +156,7 @@
 
       <!-- section -->
     </div>
-    <!-- container -->
-    {{!-- </div> --}}
+   
+    </div>
+
+    <script src="/js/userProfileInfo.js"></script>
