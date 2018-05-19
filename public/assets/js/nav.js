@@ -2,7 +2,7 @@ $(document).ready(function () {
     console.log("check");
 
     $('#myProfileLink').on("click", directMyProfile);
-        
+    event.preventDefault();   
 function directMyProfile() {
         console.log("going to my profile");
         

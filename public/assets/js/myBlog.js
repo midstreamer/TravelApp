@@ -1,5 +1,5 @@
 
- $('.tooltipped').tooltip({delay: 50});
+
 
  
 $(document).ready(function () {
@@ -26,9 +26,6 @@ $(document).ready(function () {
             }
         });
     }
-    function getStory() {
-        $.get("/api/blog/story", function (data) {
-            // console.log(data);
-        });
-    };
+    
+    $('.tooltipped').tooltip({delay: 50});
 });

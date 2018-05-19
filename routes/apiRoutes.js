@@ -209,8 +209,7 @@ app.post("/api/create/events",isLoggedIn, function (req, res) {
 
 });
 
-app.get("/api/getClientId",isLoggedIn, function(req, res) {
- 
+app.get("/api/getClientId", isLoggedIn,function(req, res) {
 
   res.json(req.user)
 
