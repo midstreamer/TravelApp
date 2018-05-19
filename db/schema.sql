@@ -81,3 +81,12 @@ CREATE TABLE `participant_food` (
   CONSTRAINT `participant_food_ibfk_1` FOREIGN KEY (`ParticipantClientId`) REFERENCES `Participants` (`client_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `participant_food_ibfk_2` FOREIGN KEY (`recFoodId`) REFERENCES `rec_foods` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+
+
+CREATE TABLE `location_Name_Codes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `location_name` varchar(10000) DEFAULT NULL,
+  `location_codes` varchar(10000) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) 
