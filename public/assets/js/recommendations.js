@@ -15,6 +15,10 @@ $(document).ready(function () {
         $("#foodClick").on("click", function () {
             $('#foodToHide').show()
         })
+//food to hide
+        $("#foodCloseToHide").on("click", function () {
+            $('#foodToHide').hide()
+        })
         // FOOD
         $("#foodOnSubmit").on("click", foodOnSubmit);
     
@@ -45,6 +49,10 @@ $(document).ready(function () {
     //on click how
     $("#attractionsClick").on("click", function () {
         $('#attractionsToHide').show()
+    })
+
+    $("#AttractionsCloseToHide").on("click", function () {
+        $('#attractionsToHide').hide()
     })
     // Attractions
     $("#attractionsOnSubmit").on("click", AttractionsOnSubmit);
@@ -77,7 +85,11 @@ $(document).ready(function () {
 
         //hide events div for input 
         $('#eventsToHide').hide()
-
+        //close option
+        $('#eventsCloseToHide').show()
+        $("#eventsCloseToHide").on("click", function () {
+            $('#eventsToHide').hide()
+        })
         //on click how
         $("#eventsClick").on("click", function () {
             $('#eventsToHide').show()
