@@ -64,7 +64,9 @@
                 <div class="card-image">
                   <h1>Click countries to select</h1>
                   <div id="chartdiv"></div>
-                  <div id="info">Seletced countries: <span id="selected">-</span></div> 
+                  <div id="info">Seletced countries:
+                    <span id="selected">-</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -112,7 +114,7 @@
                                   </div>
                                 </div>
                                 <div class="modal-footer">
-                                  <input class="modal-close waves-effect waves-green btn-flat" type="submit" value="Submit" >
+                                  <input class="modal-close waves-effect waves-green btn-flat" type="submit" value="Submit">
                                 </div>
                               </form>
                             </div>
@@ -170,10 +172,19 @@
               <div class="card-panel white">
                 <h4 class="title">Recommendations</h4>
 
-
+{{!-- food --}}
                 <ul class="collection with-header">
                   <li class="collection-header">
-                    <h5>Restaurants/Dining</h5>
+                    <h5>Restaurants/Dining
+                      <i id="foodClick" class="material-icons">add_circle_outline</i>
+                    </h5>
+                    <div id='foodToHide' class="row">
+                      <div class="input-field col s4">
+                        <textarea id="food_input" class="materialize-textarea"></textarea>
+                        <label class="active" for="Food">Food</label>
+                        <a id="foodOnSubmit" class="waves-effect waves-light btn-small">Add</a>
+                      </div>
+                    </div>
                   </li>
                   {{#each food}}
                   <li class="collection-item avatar">
@@ -182,10 +193,21 @@
                   </li>
                   {{/each}}
                 </ul>
-
+{{!--Attractions  --}}
                 <ul class="collection with-header">
                   <li class="collection-header">
-                    <h5>Attractions</h5>
+                    <h5>Attractions
+                      <i id="attractionsClick" class="material-icons">add_circle_outline</i>
+                    </h5>
+                    {{!-- --}}
+                    <div id='attractionsToHide' class="row">
+                      <div class="input-field col s4">
+                        <textarea id="attractions_input" class="materialize-textarea"></textarea>
+                        <label class="active" for="attractions">attractions</label>
+                        <a id="attractionsOnSubmit" class="waves-effect waves-light btn-small">Add</a>
+                      </div>
+                    </div>
+                    {{!-- --}}
                   </li>
                   {{#each attractions }}
                   <li class="collection-item avatar">
@@ -194,10 +216,19 @@
                   </li>
                   {{/each}}
                 </ul>
-
+{{!-- Events --}}
                 <ul class="collection with-header">
                   <li class="collection-header">
-                    <h5>Events</h5>
+                    <h5>Events
+                      <i id="eventsClick" class="material-icons">add_circle_outline</i>
+                    </h5>
+                    <div id='eventsToHide' class="row">
+                      <div class="input-field col s4">
+                        <textarea id="events_input" class="materialize-textarea"></textarea>
+                        <label class="active" for="Events">Events</label>
+                        <a id="eventsOnSubmit" class="waves-effect waves-light btn-small">Add</a>
+                      </div>
+                    </div>
                   </li>
                   {{#each events }}
                   <li class="collection-item avatar">
