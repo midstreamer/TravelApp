@@ -10,11 +10,23 @@
         </div>
     </div>
 
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field white col s6 center-align">
+                    <i class="material-icons prefix">mode_edit</i>
+                    <textarea id="search_input" class="materialize-textarea"></textarea>
+                    <a class="waves-effect waves-light btn-small" id="searchSubmit">Button</a>
+                </div>
+            </div>
+        </form>
+    </div>
 
     
 
     <div class="row">
         {{#each user}}
+            
         <div class="col s4 m4">
             <div class="card white" id="card1" style="display:none;">
                 <span class="card-content black-text">
@@ -62,11 +74,8 @@
       var earth;
       function initialize() {
         earth = new WE.map('earth_div');
-
-
         earth.setView([20, 0], 2);
         WE.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(earth);
-
         // Start a simple rotation animation
         var before = null;
         requestAnimationFrame(function animate(now) {
@@ -77,34 +86,7 @@
             requestAnimationFrame(animate);
         });
       }
-
       $(document).ready(function(){
           initialize();
       })
     </script>
-
-{{!-- </div> --}}
-
-            {{!-- <ul>
-                {{#each Participants}}
-                <li>
-                    <p>name: {{user_First_name}}</p>
- <p>last name: {{user_Last_name}}</p>
-  <p>email: {{user_email}}</p>
-   <p>bio: {{user_bio_info}}</p>
-
-                </li>
-                {{/each}}
-            </ul> --}}
-
-        {{!-- <div class="col-md-6">
-            <ul> --}}
-                {{!-- {{#each Participants}}
-                <li>
-                    <p>Type: {{user_First_name}}</p>
-
-                </li>
-                {{/each}} --}}
-            {{!-- </ul>
-
-        </div> --}}

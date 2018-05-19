@@ -91,6 +91,7 @@ body{
 #loginform {
   position: relative;
   left: 90px;
+  width: 200px;
 }
 #textform{
 position: relative;

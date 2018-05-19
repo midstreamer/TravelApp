@@ -39,7 +39,7 @@
 
                   <div class="card-stacked">
                       <div class="card-content">
-                          <form class="col s12" action="/api/blog/Story" method="POST">
+                          <form class="col s12" id= "test" action="/api/blog/Story" method="POST">
                                 <div class="row">
                                   <div class="input-field col s6">
                                     <input id="newStoryTitle" type="text" name="Title" data-length="10">
@@ -80,11 +80,12 @@
   </div>
 
     
-
+<h4 class="header white-text">My Stories</h4>
+{{#each blog}}
        <div class="row">
           
             <div class="col s12">
-            <h4 class="header white-text">My Stories</h4>
+            
             <div class="row">
             <div class="card horizontal">
                   <div class="card-image">
@@ -95,9 +96,9 @@
                   <div class="card-content">
                     <h3 class="card-title">Story Title</h3>                  
                     <h5 class="card-title">MM/DD/YYYY HH/MM AM/PM<i class="material-icons right">more_vert</i></h5>
-                    {{#each blog}}
+                    
                     {{ dataValues.user_StoryList }}
-                    {{/each}}
+                    
                     <hr>
                     
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel iaculis nunc. Cras lacinia nunc nulla, et euismod turpis posuere eu. Donec sit amet ullamcorper justo, sed cursus orci. Mauris dignissim semper justo, vel commodo velit euismod eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula rhoncus sapien, non ultricies elit mattis eget. Phasellus venenatis gravida fringilla. Ut ac magna tortor.
@@ -113,7 +114,8 @@ Vestibulum finibus, dolor ac condimentum consectetur, nisl odio placerat orci, a
                   <div class="card-action">
                     
                     <a href="#" class="mdl-button">Comment</a>
-                    <a href="#" class="mdl-button">Useful!</a>
+                      <a class="btn tooltipped" data-position="top" data-delay="50" data-tooltip="Thanks">Rating</a>
+
                   </div>
                   </div>
                
@@ -122,4 +124,5 @@ Vestibulum finibus, dolor ac condimentum consectetur, nisl odio placerat orci, a
             </div>                
           
         </div>
+        {{/each}}
     </div>
