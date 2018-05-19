@@ -209,4 +209,10 @@ app.post("/api/create/events", function (req, res) {
 
 });
 
-}
+app.get("/api/getClientId", function(req, res) {
+ 
+
+  res.json(req.user)
+
+});
+};
