@@ -51,6 +51,9 @@ module.exports = function (sequelize, DataTypes) {
         Participants.hasMany(models.rec_eve, {
             onDelete: "cascade"
         });
+        Participants.hasMany(models.rec_food, {
+            onDelete: "cascade"
+        });
         Participants.hasMany(models.user_location, {
             onDelete: "cascade"
         });
