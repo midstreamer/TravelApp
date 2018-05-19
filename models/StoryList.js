@@ -3,6 +3,7 @@ module.exports = function (sequelize, DataTypes) {
           user_StoryList: DataTypes.STRING,
           user_title:DataTypes.STRING,
           ParticipantClientId: DataTypes.INTEGER
+
   });
   
   Blog.associate = function(models) {

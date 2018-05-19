@@ -45,9 +45,7 @@ module.exports = function (sequelize, DataTypes) {
                 Participants.belongsToMany(models.rec_food, {through:"participant_food",foreignKey:"ParticipantClientId",
             onDelete: "cascade"
         });
-        Participants.hasMany(models.rec_food, {
-            onDelete: "cascade"
-        });
+
         Participants.hasMany(models.rec_att, {
             onDelete: "cascade"
         });
