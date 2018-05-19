@@ -5,7 +5,7 @@ var passport = require("../config/passport");
 // =============================================================
 module.exports = function (app) {
   // HOME PAGE: getting users from database
-  app.get("/api/getuser", isLoggedIn, function (req, res) {
+  app.get("/api/getuserList", isLoggedIn, function (req, res) {
     console.log(req.user);
     db.Participants.findAll({
       include: { model: db.Blog }
@@ -15,7 +15,7 @@ module.exports = function (app) {
     });
   });
   //USER PROFILE PAGE
-  app.get("/api/getuser/:id", isLoggedIn, function (req, res) {
+  app.get("/api/otheruser/:id", isLoggedIn, function (req, res) {
     db.Participants.findOne({
       where: {
         client_id: req.params.id
@@ -23,12 +23,12 @@ module.exports = function (app) {
       include: [db.Blog, db.rec_food, db.rec_att, db.rec_eve]
     }).then(function (dbParticipants) {
       res.render("userProfile", { user: dbParticipants.dataValues, blog: dbParticipants.dataValues.Blogs, food: dbParticipants.dataValues.rec_foods, attractions: dbParticipants.dataValues.rec_atts, events: dbParticipants.dataValues.rec_eves });
-      console.log(dbParticipants.dataValues.rec_eves[0])
+      // console.log(dbParticipants.dataValues.rec_eves[0])
     });
   });
   //MYUSER PROFILE PAGE
   app.get("/api/myprofile/:id", isLoggedIn, function (req, res) {
-    //console.log(req.params.id)    
+    console.log(req.params.id)    
     db.Participants.findOne({
       where: {
         client_id: req.params.id
@@ -36,11 +36,11 @@ module.exports = function (app) {
       include: [db.Blog, db.rec_food, db.rec_att, db.rec_eve]
     }).then(function (dbParticipants) {
       res.render("myUserProfile", { user: dbParticipants.dataValues, blog: dbParticipants.dataValues.Blogs, food: dbParticipants.dataValues.rec_foods, attractions: dbParticipants.dataValues.rec_atts, events: dbParticipants.dataValues.rec_eves });
-      // console.log("myUserProfilesdfasdf sdf asdf asdf asdf asd fasdf asdf as")
-      // console.log(dbParticipants.dataValues)
-      // console.log("myUserProfilesdfasdf sdf asdf asdf asdf asd fasdf asdf as")
     });
   });
+
+
+
   //USER BLOG PAGE
   app.get("/api/blog/:id",isLoggedIn, function (req, res) {
     db.Participants.findOne({
@@ -55,9 +55,8 @@ module.exports = function (app) {
   });
 
   //PERSONAL USER BLOG PAGE
-  app.get("/api/blog/myblog/:id", isLoggedIn, function (req, res) {
+  app.get("/api/blog/myblog/:id", function (req, res) {
     db.Participants.findOne({
-    
       where: {
         client_id: req.params.id
       },
@@ -130,7 +129,7 @@ res.json( dbUser_location);
   app.get("/app/:id",isLoggedIn, function (req, res) {
   })
   app.post('/api/login',
-  passport.authenticate('local', { successRedirect: '/api/getuser',
+  passport.authenticate('local', { successRedirect: '/api/getuserList',
                                    failureRedirect: '/login',
                                    failureFlash: true })
 );
@@ -188,14 +187,20 @@ app.post("/api/create/attractions",isLoggedIn, function (req, res) {
     
   });
 });
-app.post('/api/event/remove/:id',isLoggedIn, function (req, res) {
-  console.log(req.params.id)
-  db.rec_eves.destroy({
-    where:{
-    user_rec_eve:req.param.id
-  }
-})
-})
+// app.post('/api/event/remove/:id',isLoggedIn, function (req, res) {
+//   console.log(req.params.id)
+//   db.rec_eve.destroy({
+//     where:{
+//     id: req.params.id
+//   }
+// }).then(function (data) {
+//   res.redirect("")
+
+// });
+// })
+
+
+
 
 app.post("/api/create/events",isLoggedIn, function (req, res) {
 //  console.log("event**********************")
@@ -221,6 +226,8 @@ app.get("/api/getClientId",isLoggedIn, function(req, res) {
   res.json(req.user)
 
 });
+
+
 
 
 };

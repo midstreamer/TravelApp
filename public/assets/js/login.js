@@ -41,7 +41,7 @@ $(document).ready(function() {
           window.location = ("/login");
         }
         else if(data.search(" <title>Yaatra Home</title>")>=0){
-            window.location = ("/api/getuser");
+            window.location = ("/api/getuserList");
         }
        
       }).fail(function(xhr, status, error) {

@@ -223,7 +223,7 @@
                   {{/each}}
                 </ul>
                 {{!-- Events --}}
-                 <ul class="collection with-header">
+                <ul class="collection with-header">
                   <li class="collection-header">
                     <h5>Events
                       <i id="eventsClick" class="material-icons">add_circle_outline</i>
@@ -243,6 +243,10 @@
                   <li class="collection-item avatar">
                     <i class="material-icons circle blue">photo_camera</i>
                     <P>{{dataValues.user_rec_eve}}</P>
+                    <form id="update" action="/api/event/remove/{{this.id}}" method="POST">
+                      <input type="hidden" name="toDelete">
+                      <button class="btn btn-danger" type="submit">delete</button>
+                    </form>
                   </li>
                   {{/each}}
                 </ul>
@@ -255,9 +259,9 @@
               <!-- row -->
             </div>
 
-      <!-- section -->
-    </div>
-    <!-- container -->
-    {{!-- </div> --}}
+            <!-- section -->
+          </div>
+          <!-- container -->
+          {{!-- </div> --}}
 
-    <script src="/js/recommendations.js"></script> 
+        <script src="/js/recommendations.js"></script>

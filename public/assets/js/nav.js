@@ -7,11 +7,11 @@ function directMyProfile() {
         console.log("going to my profile");
         
         $.get("/api/getClientId", function(data, cb) {
-            console.log(data);
+           // console.log(data);
             
         }).then(function(data){
-            console.log(data);
-            console.log("here");
+            //console.log(data);
+            //console.log("here");
             location.href = "/api/myprofile/"+data;
         });
     }

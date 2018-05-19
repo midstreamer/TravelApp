@@ -1,7 +1,7 @@
 CREATE TABLE `Blogs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_StoryList` varchar(10000) DEFAULT NULL,
-  `user_title` varchar(10000) DEFAULT NULL,
+  `user_StoryList` varchar(1000) DEFAULT NULL,
+  `user_title` varchar(1000) DEFAULT NULL,
   `ParticipantClientId` int(11) NOT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE `Participants` (
   `user_First_name` varchar(255) DEFAULT NULL,
   `user_Last_name` varchar(255) DEFAULT NULL,
   `user_email` varchar(255) DEFAULT NULL,
-  `user_bio_info` varchar(10000) DEFAULT NULL,
+  `user_bio_info` varchar(1000) DEFAULT NULL,
   `user_pic_profile` varchar(255) DEFAULT NULL,
   `user_password` varchar(255) DEFAULT NULL,
   `createdAt` datetime NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE `Participants` (
 );
 CREATE TABLE `rec_atts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_rec_att` varchar(10000) DEFAULT NULL,
+  `user_rec_att` varchar(1000) DEFAULT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   `ParticipantClientId` int(11) NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE `rec_atts` (
 );
 CREATE TABLE `rec_eves` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_rec_eve` varchar(10000) DEFAULT NULL,
+  `user_rec_eve` varchar(1000) DEFAULT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   `ParticipantClientId` int(11) NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE `rec_eves` (
 ) ;
 CREATE TABLE `rec_foods` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_rec_food` varchar(10000) DEFAULT NULL,
+  `user_rec_food` varchar(1000) DEFAULT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   `ParticipantClientId` int(11) NOT NULL,
@@ -53,7 +53,7 @@ CREATE TABLE `rec_foods` (
 ); 
 CREATE TABLE `user_locations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_location` varchar(10000) DEFAULT NULL,
+  `user_location` varchar(1000) DEFAULT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   `ParticipantClientId` int(11) NOT NULL,
@@ -86,7 +86,7 @@ CREATE TABLE `participant_food` (
 
 CREATE TABLE `location_Name_Codes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `location_name` varchar(10000) DEFAULT NULL,
-  `location_codes` varchar(10000) DEFAULT NULL,
+  `location_name` varchar(1000) DEFAULT NULL,
+  `location_codes` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) 
