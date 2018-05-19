@@ -1,3 +1,7 @@
+
+ $('.tooltipped').tooltip({delay: 50});
+
+ 
 $(document).ready(function () {
     console.log("We live");
     $("#storySubmitBtn").on("click", storySubmit);

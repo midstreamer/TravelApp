@@ -158,4 +158,49 @@ app.get("/api/homePage/search", function (req, res) {
     res.redirect('/login');
 }
 
+
+app.post("/api/create/food", function (req, res) {
+  // console.log(req.body)
+  db.rec_food.create({
+    user_rec_food:req.body.newFood_input,
+    ParticipantClientId: req.user
+    // ParticipantClientId:req.user --- if logged in
+      })
+  .then(function (data) {
+    res.json(data)
+    
+    
+  });
+
+});
+//creating new post for attraction insert 
+app.post("/api/create/attractions", function (req, res) {
+  db.rec_att.create({
+    user_rec_att:req.body.newAttractions_input,
+    ParticipantClientId: req.user
+    // ParticipantClientId:req.user --- if logged in
+      })
+  .then(function (data) {
+    res.json(data)
+    
+    
+  });
+});
+
+app.post("/api/create/events", function (req, res) {
+  // console.log(req.body)rec_eve
+
+  db.rec_food.create({
+    user_rec_eve:req.body.newEvents_input,
+    ParticipantClientId: req.user
+    // ParticipantClientId:req.user --- if logged in
+      })
+  .then(function (data) {
+    res.json(data)
+    
+    
+  });
+
+});
+
 }
