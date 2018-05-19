@@ -215,4 +215,21 @@ app.get("/api/getClientId",isLoggedIn, function(req, res) {
   res.json(req.user)
 
 });
+
+
+
+
+app.get("/api/getuser/profile/location/search", function (req, res) {
+  // console.log(req.query.newSearch_input)
+    db.user_location.findAll({
+      where :{
+        user_location:'houston'
+      },
+      include:[db.Participants],
+    }).then(function (dbUser_location) {
+  res.json( dbUser_location);
+      // console.log(dbParticipants.dataValues.Blogs[0].dataValues.user_StoryList)
+    });
+  });
+
 };
