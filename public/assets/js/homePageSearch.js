@@ -26,34 +26,36 @@ $(document).ready(function () {
     $.ajax({
         url: "https://maps.googleapis.com/maps/api/geocode/json?address=Egypt&key=AIzaSyBNoUFS9OOH34ztpgmTmcvb8DPYEBCxxlc", success: function (result) {
             console.log(result.results[0].geometry.location);
-            dropMarker(result.results[0].geometry.location.lng, result.results[0].geometry.location.lat ,"Rohan");
+            dropMarker(result.results[0].geometry.location.lng, result.results[0].geometry.location.lat, "Rohan");
         }
     });
 
 
-    function dropMarker(long, lat, title, text){
+    function dropMarker(long, lat, title, text) {
         console.log("dropping marker");
         var marker = WE.marker([long, lat]).addTo(earth);
-        if(text){
-            marker.bindPopup("<b>"+title+"</b><br>"+text+"<br />", {maxWidth: 150, closeButton: true});
+        if (text) {
+            marker.bindPopup("<b>" + title + "</b><br>" + text + "<br />", { maxWidth: 150, closeButton: true });
         }
-        else{
-            marker.bindPopup("<b>"+title+"</b>", {maxWidth: 150, closeButton: true});
+        else {
+            marker.bindPopup("<b>" + title + "</b>", { maxWidth: 150, closeButton: true });
         }
-        
+
     }
 
     $("#searchSubmit").on("click", participantSearchHome);
 
     function participantSearchHome() {
 
-        console.log("storySubmit")
         event.preventDefault();
         var search_input = $("#search_input").val().trim();
         console.log(search_input)
 
-
-        $.get("/api/homePage/search", search_input, function (data, cb) {
+        var newSearch_input = {
+            newSearch_input: search_input
+        }
+        console.log(search_input)
+        $.get("/api/homepage/search", newSearch_input, function (data, cb) {
             console.log(data)
         }
         ).then(function (data) {
@@ -64,11 +66,11 @@ $(document).ready(function () {
         });
 
 
-        
+
     }
 
 
-   
+
 
 
 
