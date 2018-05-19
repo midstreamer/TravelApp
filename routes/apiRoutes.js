@@ -88,7 +88,7 @@ ParticipantClientId:req.user
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
-  app.post("/api/createuser", function (req, res) {
+  app.post("/api/createuser", isLoggedIn, function (req, res) {
     db.Participants.create(req.body
     ).then(function () {
       res.send(200);
@@ -108,7 +108,7 @@ ParticipantClientId:req.user
   });
 
 
-app.get("/api/homepage/search", function (req, res) {
+app.get("/api/homepage/search", isLoggedIn, function (req, res) {
 // console.log(req.query.newSearch_input)
   db.user_location.findAll({
     where :{
@@ -123,7 +123,7 @@ res.json( dbUser_location);
 
 
 
-  app.get("/app/:id", function (req, res) {
+  app.get("/app/:id",isLoggedIn, function (req, res) {
   })
   app.post('/api/login',
   passport.authenticate('local', { successRedirect: '/api/getuser',
@@ -136,7 +136,7 @@ res.json( dbUser_location);
     res.redirect("/");
   });
   // Route for getting some data about our user to be used client side
-  app.get("/api/user_data", function (req, res) {
+  app.get("/api/user_data",isLoggedIn, function (req, res) {
     if (!req.user) {
       // The user is not logged in, send back an empty object
       res.json({});
@@ -157,7 +157,7 @@ res.json( dbUser_location);
 }
 
 
-app.post("/api/create/food", function (req, res) {
+app.post("/api/create/food",isLoggedIn, function (req, res) {
   // console.log(req.body)
   db.rec_food.create({
     user_rec_food:req.body.newFood_input,
@@ -172,7 +172,7 @@ app.post("/api/create/food", function (req, res) {
 
 });
 //creating new post for attraction insert 
-app.post("/api/create/attractions", function (req, res) {
+app.post("/api/create/attractions",isLoggedIn, function (req, res) {
   db.rec_att.create({
     user_rec_att:req.body.newAttractions_input,
     ParticipantClientId: req.user
@@ -184,7 +184,7 @@ app.post("/api/create/attractions", function (req, res) {
     
   });
 });
-app.post('/api/event/remove/:id', function (req, res) {
+app.post('/api/event/remove/:id',isLoggedIn, function (req, res) {
   console.log(req.params.id)
   db.rec_eves.destroy({
     where:{
@@ -193,7 +193,7 @@ app.post('/api/event/remove/:id', function (req, res) {
 })
 })
 
-app.post("/api/create/events", function (req, res) {
+app.post("/api/create/events",isLoggedIn, function (req, res) {
   // console.log(req.body)rec_eve
 
   db.rec_food.create({
@@ -209,7 +209,7 @@ app.post("/api/create/events", function (req, res) {
 
 });
 
-app.get("/api/getClientId", function(req, res) {
+app.get("/api/getClientId",isLoggedIn, function(req, res) {
  
 
   res.json(req.user)
