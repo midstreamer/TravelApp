@@ -87,6 +87,13 @@ body{
   padding: 60px;
   width: 600px;
   border-radius: 25px;
+  display: block;
+    margin: auto;
+    animation: hammer 5s  2s linear infinite;
+ }
+@keyframes login {
+    0%    { transform: rotateY(0deg);  }
+    100%  { transform: rotateY(360deg);}
 }
 #loginform {
   position: relative;

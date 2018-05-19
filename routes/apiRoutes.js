@@ -107,23 +107,21 @@ ParticipantClientId:req.user
     });
   });
 
-//new logic for homepage search
-app.get("/api/homePage/search", function (req, res) {
-  
+
+app.get("/api/homepage/search", function (req, res) {
+// console.log(req.query.newSearch_input)
   db.user_location.findAll({
     where :{
-      user_location:req.body 
+      user_location:req.query.newSearch_input
     },
     include:[db.Participants],
   }).then(function (dbUser_location) {
-    res.json(dbUser_location);
-
-    
-// res.render("index", { dbUser_location});
-// console.log(dbUser_location)
+res.json( dbUser_location);
     // console.log(dbParticipants.dataValues.Blogs[0].dataValues.user_StoryList)
   });
 });
+
+
 
   app.get("/app/:id", function (req, res) {
   })
