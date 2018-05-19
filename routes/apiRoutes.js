@@ -184,6 +184,14 @@ app.post("/api/create/attractions", function (req, res) {
     
   });
 });
+app.post('/api/event/remove/:id', function (req, res) {
+  console.log(req.params.id)
+  db.rec_eves.destroy({
+    where:{
+    user_rec_eve:req.param.id
+  }
+})
+})
 
 app.post("/api/create/events", function (req, res) {
   // console.log(req.body)rec_eve

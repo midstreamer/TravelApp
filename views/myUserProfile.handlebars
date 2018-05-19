@@ -64,7 +64,9 @@
                 <div class="card-image">
                   <h1>Click countries to select</h1>
                   <div id="chartdiv"></div>
-                  <div id="info">Seletced countries: <span id="selected">-</span></div> 
+                  <div id="info">Seletced countries:
+                    <span id="selected">-</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -112,7 +114,7 @@
                                   </div>
                                 </div>
                                 <div class="modal-footer">
-                                  <input class="modal-close waves-effect waves-green btn-flat" type="submit" value="Submit" >
+                                  <input class="modal-close waves-effect waves-green btn-flat" type="submit" value="Submit">
                                 </div>
                               </form>
                             </div>
@@ -238,20 +240,26 @@
                   {{#each events }}
                   <li class="collection-item avatar">
                     <i class="material-icons circle red">photo_camera</i>
-                    <P>{{ dataValues.user_rec_eve }}</P>
+                    <P>{{ dataValues.user_rec_eve }}
+                    </P>
+                    <form id="update" action="/api/event/remove/{{this.id}}" method="POST">
+                      <input type="hidden" name="toDelete" value="true">
+                      <button class="btn btn-danger" type="submit">remove</button>
+                    </form>
+
                   </li>
                   {{/each}}
                 </ul>
 
 
-          <!-- icon block -->
-        </div>
-        <!-- col s9 -- >
+                <!-- icon block -->
+              </div>
+              <!-- col s9 -- >
   </div>
               <!-- row -->
-      </div>
+            </div>
 
-      <!-- section -->
-    </div>
-    <!-- container -->
-    {{!-- </div> --}}
+            <!-- section -->
+          </div>
+          <!-- container -->
+          {{!-- </div> --}}
