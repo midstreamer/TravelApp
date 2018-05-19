@@ -64,7 +64,13 @@
                 <div class="card-image">
                   <h1>Click countries to select</h1>
                   <div id="chartdiv"></div>
+<<<<<<< HEAD
                   <div id="info">Selected countries: <span id="selected">-</span></div> 
+=======
+                  <div id="info">Seletced countries:
+                    <span id="selected">-</span>
+                  </div>
+>>>>>>> f14a633e5cc53f51fd2039c3adc8ea6839afc8b3
                 </div>
               </div>
             </div>
@@ -186,30 +192,26 @@
                   {{/each}}
                 </ul>
                 {{!-- Events --}}
-                <ul class="collection with-header">
+                 <ul class="collection with-header">
                   <li class="collection-header">
                     <h5>Events
                       <i id="eventsClick" class="material-icons">add_circle_outline</i>
                     </h5>
+                    {{!-- --}}
                     <div id='eventsToHide' class="row">
                       <i id='eventsCloseToHide' class="material-icons">close</i>
                       <div class="input-field col s4">
                         <textarea id="events_input" class="materialize-textarea"></textarea>
-                        <label class="active" for="Events">Events</label>
+                        <label class="active" for="events">events</label>
                         <a id="eventsOnSubmit" class="waves-effect waves-light btn-small">Add</a>
                       </div>
                     </div>
+                    {{!-- --}}
                   </li>
                   {{#each events }}
                   <li class="collection-item avatar">
-                    <i class="material-icons circle red">photo_camera</i>
-                    <P>{{ dataValues.user_rec_eve }}
-                    </P>
-                    <form id="update" action="/api/event/remove/{{this.id}}" method="POST">
-                      <input type="hidden" name="toDelete" value="true">
-                      <button class="btn btn-danger" type="submit">remove</button>
-                    </form>
-
+                    <i class="material-icons circle blue">photo_camera</i>
+                    <P>{{dataValues.user_rec_eve}}</P>
                   </li>
                   {{/each}}
                 </ul>
