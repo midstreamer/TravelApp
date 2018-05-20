@@ -37,8 +37,9 @@ $(document).ready(function() {
 
         if(data.search("<title>Passport Authentication</title>")>=0){
 
-     
+         
           window.location = ("/login");
+
         }
         else if(data.search(" <title>Yaatra Home</title>")>=0){
             window.location = ("/api/getuserList");
