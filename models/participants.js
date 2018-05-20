@@ -10,10 +10,13 @@ module.exports = function (sequelize, DataTypes) {
             primaryKey: true
 
         },
+        google_id: DataTypes.STRING(255),
+        facebook_id: DataTypes.STRING(255),
+        twit_id: DataTypes.STRING(255),
         user_First_name: DataTypes.STRING,
         user_Last_name: DataTypes.STRING,
         user_email: DataTypes.STRING,
-        user_bio_info: DataTypes.STRING(1000),
+        user_bio_info: DataTypes.STRING(10000),
         user_pic_profile: DataTypes.STRING,
         user_password: DataTypes.STRING
 
@@ -23,14 +26,12 @@ module.exports = function (sequelize, DataTypes) {
 
     Participants.prototype.validPassword = function (password) {
 
-        console.log("checking valid password      " +password +"       " +this.user_password);
         return bcrypt.compareSync(password, this.user_password);
     };
     // Hooks are automatic methods that run during various phases of the User Model lifecycle
     // In this case, before a User is created, we will automatically hash their password
     Participants.hook("beforeCreate", function (user) {
 
-        console.log(user.user_password);
         user.user_password = bcrypt.hashSync(user.user_password, bcrypt.genSaltSync(10));
     });
 
@@ -42,20 +43,13 @@ module.exports = function (sequelize, DataTypes) {
         });
 
         //Users rec 
-                Participants.belongsToMany(models.rec_food, {through:"participant_food",foreignKey:"ParticipantClientId",
+                Participants.hasMany(models.rec_food, {
             onDelete: "cascade"
         });
-
         Participants.hasMany(models.rec_att, {
             onDelete: "cascade"
         });
         Participants.hasMany(models.rec_eve, {
-            onDelete: "cascade"
-        });
-        Participants.hasMany(models.rec_food, {
-            onDelete: "cascade"
-        });
-        Participants.hasMany(models.user_location, {
             onDelete: "cascade"
         });
         // 
