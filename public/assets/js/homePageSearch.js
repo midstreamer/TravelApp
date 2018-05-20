@@ -56,7 +56,7 @@ $(document).ready(function () {
         }
         console.log(search_input)
         $.get("/api/homepage/search", newSearch_input, function (data, cb) {
-            console.log(data)
+            // console.log(data)
         }
         ).then(function (data) {
             if (data) {
@@ -84,7 +84,7 @@ $(document).ready(function () {
                 });
 
                 
-                console.log(data)
+                // console.log(data)
             }
         });
 
@@ -95,12 +95,12 @@ $(document).ready(function () {
 
 
     $("#earth-container").mouseenter(function(){
-        console.log("mouseenter");
+        // console.log("mouseenter");
         keepAnimating = false;
     })
 
      $("#earth-container").mouseleave(function(){
-         console.log("mouseleave");
+        //  console.log("mouseleave");
         keepAnimating = true;
         var before = null;
 

@@ -152,7 +152,6 @@ passport.serializeUser(function (user, cb) {
 
 passport.deserializeUser(function (obj, cb) {
 
-    console.log("deserialize")
     cb(null, obj);
 });
 

@@ -21,7 +21,7 @@ $(document).ready(function () {
         ).then(function (data) {
             if (data) {
                 alert("all done, thanks");
-                console.log(data)
+                // console.log(data)
                 location.reload();
             }
         });

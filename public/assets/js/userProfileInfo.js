@@ -14,7 +14,6 @@ $(document).ready(function () {
 
 
 
-
   var map = AmCharts.makeChart("chartdiv", {
     "type": "map",
     "theme": "light",
@@ -39,7 +38,7 @@ $(document).ready(function () {
           return;
 
         var area = e.mapObject;
-
+        console.log(area);
         // Toggle showAsSelected
         area.showAsSelected = !area.showAsSelected;
         e.chart.returnInitialColor(area);
@@ -58,6 +57,7 @@ $(document).ready(function () {
     var selected = [];
     for (var i = 0; i < map.dataProvider.areas.length; i++) {
       if (map.dataProvider.areas[i].showAsSelected)
+      console.log(map.dataProvider.areas[i]);
         selected.push(map.dataProvider.areas[i].id);
     }
     return selected;

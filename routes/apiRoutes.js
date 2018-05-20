@@ -6,12 +6,12 @@ var passport = require("../config/passport");
 module.exports = function (app) {
   // HOME PAGE: getting users from database
   app.get("/api/getuserList", isLoggedIn, function (req, res) {
-    console.log(req.user);
+    // console.log(req.user);
     db.Participants.findAll({
       include: { model: db.Blog }
     }).then(function (dbParticipants) {
       res.render("index", { user: dbParticipants });
-      console.log(dbParticipants)
+      // console.log(dbParticipants)
     });
   });
   //USER PROFILE PAGE
@@ -55,7 +55,7 @@ module.exports = function (app) {
   });
 
   //PERSONAL USER BLOG PAGE
-  app.get("/api/blog/myblog/:id", function (req, res) {
+  app.get("/api/blog/myblog/:id",isLoggedIn, function (req, res) {
     db.Participants.findOne({
       where: {
         client_id: req.params.id
@@ -88,19 +88,7 @@ ParticipantClientId:req.user
     
   });
 });
-  // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
-  // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
-  // otherwise send back an error
-  app.post("/api/createuser", function (req, res) {
-    db.Participants.create(req.body
-    ).then(function () {
-      res.send(200);
-    }).catch(function (err) {
-      console.log(err);
-      res.json(err);
-      // res.status(422).json(err.errors[0].message);
-    });
-  });
+  
   // findAll stories for participant 
   app.get("/api/blog", isLoggedIn, function (req, res) {
     db.Participants.findAll({
@@ -128,16 +116,8 @@ res.json( dbUser_location);
 
   app.get("/app/:id",isLoggedIn, function (req, res) {
   })
-  app.post('/api/login',
-  passport.authenticate('local', { successRedirect: '/api/getuserList',
-                                   failureRedirect: '/login',
-                                   failureFlash: true })
-);
-  // Route for logging user out
-  app.get("/logout", function (req, res) {
-    req.logout();
-    res.redirect("/");
-  });
+
+
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data",isLoggedIn, function (req, res) {
     if (!req.user) {
@@ -153,11 +133,7 @@ res.json( dbUser_location);
       });
     }
   });
-  function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated())
-        return next();
-    res.redirect('/login');
-}
+
 
 
 app.post("/api/create/food",isLoggedIn, function (req, res) {
@@ -254,6 +230,51 @@ app.get("/api/getClientId",isLoggedIn, function(req, res) {
   res.json(req.user)
 
 });
+
+
+
+// ==========================================================================================================================
+// ========PASSPORT ROUTES==============
+// ========================================================================================================================
+
+
+// Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
+  // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
+  // otherwise send back an error
+  app.post("/api/createuser", function (req, res) {
+    db.Participants.create(req.body
+    ).then(function () {
+      res.send(200);
+    }).catch(function (err) {
+      console.log(err);
+      res.json(err);
+      // res.status(422).json(err.errors[0].message);
+    });
+  });
+
+
+  app.post('/api/login',
+  passport.authenticate('local', { successRedirect: '/api/getuserList',
+                                   failureRedirect: '/login',
+                                   failureFlash: true })
+);
+
+  // Route for logging user out
+  app.get("/logout", function (req, res) {
+
+    req.logout();
+    res.redirect("/");
+  });
+
+
+function isLoggedIn(req, res, next) {
+
+  console.log("checking for log ing" + req.isAuthenticated());
+  if (req.isAuthenticated()){
+    return next();  
+  }
+  res.redirect('/login');
+}
 
 
 
