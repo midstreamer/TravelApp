@@ -94,11 +94,19 @@
 
                           <i class="material-icons right">more_vert</i>
                         </h4>
-                        {{#each blog}} {{ dataValues.user_StoryList }} {{/each}}
+                        {{#each blog}} {{ dataValues.user_StoryList }}
+                        <form id="updatePost" action="/api/delete/postList/{{this.id}}" method="POST">
+                          <input type="hidden" name="toDelete">
+                          <button class="btn btn-danger" type="submit">delete</button>
+                        </form>
+                        {{/each}}
                       </div>
                       <div class="card-action">
                         <a href="/api/blog/{{ user.client_id }}" target="_blank">Read Story</a>
                         <a href="/api/blog/myblog/{{ user.client_id }}" target="_blank">Create New Story</a>
+
+
+
                       </div>
                     </div>
                     {{!-- </div> --}}

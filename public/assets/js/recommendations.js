@@ -132,7 +132,49 @@ $(document).ready(function () {
             });
         }
 
+
+        $("#updateFood").on("click", removeFood);
+
+        function removeFood(){
+            $.post('/api/food/remove/:id', function(data, cb) {
           
+            }).then(function (data) {
+                if (data) {
+                    // alert("event was removed ");
+                    // location.reload();
+                }
+            });
+        }
+
+        $("#updateAtt").on("click", removeAtt);
+
+        function removeEvent(){
+            $.post('/api/att/remove/:id', function(data, cb) {
+          
+            }).then(function (data) {
+                if (data) {
+                    // alert("event was removed ");
+                    // location.reload();
+                }
+            });
+        }
+
+        $("#updatePost").on("click", deletePostList);    
+function deletePostList(){
+    $.post('/api/delete/postList/:id', function (data, cb)  {
+  
+      // res.json(data)
+      }).then(function (data) {
+        if (data) {
+            // alert("event was removed ");
+            // location.reload();
+        }
+    });
+      
+      
+}
+
+
 
 
 });

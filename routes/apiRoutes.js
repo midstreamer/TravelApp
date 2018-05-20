@@ -220,6 +220,17 @@ app.post('/api/att/remove/:id',isLoggedIn, function (req, res) {
 // res.json(data)
 });
 })
+app.post('/api/delete/postList/:id',isLoggedIn, function (req, res) {
+  console.log(req.params.id)
+  db.Blog.destroy({
+    where:{
+    id: req.params.id
+  }
+}).then(function (data) {
+  res.redirect("/api/myprofile/"+req.user)
+// res.json(data)
+});
+})
 
 
 
