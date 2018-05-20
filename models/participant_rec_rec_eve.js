@@ -1,7 +1,7 @@
 
 module.exports = function (sequelize, DataTypes) {
 	var rec_eve = sequelize.define("rec_eve", {
-        user_rec_eve: DataTypes.STRING(10000),
+        user_rec_eve: DataTypes.STRING(100),
     });
     
     rec_eve.associate = function(models) {

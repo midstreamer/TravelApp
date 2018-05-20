@@ -1,7 +1,7 @@
 module.exports = function (sequelize, DataTypes) {
   var Blog = sequelize.define("Blog", {
-          user_StoryList: DataTypes.STRING,
-          user_title:DataTypes.STRING,
+          user_StoryList: DataTypes.STRING(100),
+          user_title:DataTypes.STRING(100),
           ParticipantClientId: DataTypes.INTEGER
 
   });
