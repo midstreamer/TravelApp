@@ -187,17 +187,17 @@ app.post("/api/create/attractions",isLoggedIn, function (req, res) {
     
   });
 });
-// app.post('/api/event/remove/:id',isLoggedIn, function (req, res) {
-//   console.log(req.params.id)
-//   db.rec_eve.destroy({
-//     where:{
-//     id: req.params.id
-//   }
-// }).then(function (data) {
-//   res.redirect("")
+app.post('/api/event/remove/:id',isLoggedIn, function (req, res) {
+  console.log(req.params.id)
+  db.rec_eve.destroy({
+    where:{
+    id: req.params.id
+  }
+}).then(function (data) {
+  res.json(data)
 
-// });
-// })
+});
+})
 
 
 
