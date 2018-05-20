@@ -1,5 +1,6 @@
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
+const GoogleStrategy = require('passport-google-oauth20');
 
 var db = require("../models");
 
@@ -31,6 +32,45 @@ passport.use(new LocalStrategy(
         });
     }
 ));
+
+
+
+
+
+
+
+passport.use(new GoogleStrategy({
+    callbackURL: "/auth/google/callback",
+    clientID: "1069128668253-50mqj8c4u7eqkhojr231cfchb6hg6215.apps.googleusercontent.com",
+    clientSecret: "PmX-jt5vDYXZQpgcoerQJRpZ"
+}, function (accessToken, refreshToken, profile, done) {
+    // passport callback
+    // db.user.findOne({
+    //     where: {
+    //         googleID: profile.id
+    //     }
+    // }).then(function (currentUser) {
+    //     if (currentUser) {
+    //         console.log(currentUser.dataValues.id);
+    //         console.log('That user already exists');
+    //         done(null, currentUser);
+    //     } else {
+    //         db.user.create({
+    //             googleID: profile.id,
+    //             firstName: profile.name.givenName,
+    //             lastName: profile.name.familyName
+    //         }).then(function (newUser) {
+    //             console.log(newUser.dataValues.id);
+    //             console.log('new google user created', newUser);
+    //             done(null, newUser);
+    //         });
+    //     }
+    // });
+
+    console.log(profile);
+    // console.log(profile);
+    
+}));
 
 
 

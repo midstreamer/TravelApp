@@ -148,7 +148,10 @@ $(document).ready(function () {
 
         $("#updateAtt").on("click", removeAtt);
 
-        function removeEvent(){
+
+        
+
+        function removeAtt(){
             $.post('/api/att/remove/:id', function(data, cb) {
           
             }).then(function (data) {
