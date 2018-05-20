@@ -86,7 +86,7 @@ CREATE TABLE `participant_food` (
 
 CREATE TABLE `location_Name_Codes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `location_name` varchar(1000) DEFAULT NULL,
-  `location_codes` varchar(1000) DEFAULT NULL,
+  `location_name` varchar(255) DEFAULT NULL,
+  `location_codes` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) 
+); 
