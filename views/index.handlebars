@@ -1,5 +1,4 @@
 {{!-- <div class="container"> --}}
-    <div id="earth-container"class="row">
         <div class="col s12 m12">
             {{!-- <div id="earth_div" class="card-panel white" style="display:none"> --}}
                 <div id="earth_div" style="height:500px">
@@ -11,11 +10,11 @@
     </div>
 
     
-        <div class="nav-wrapper blue">
-            <form class="countrySearch col s12 no-padding ">
+        <div class="nav-wrapper blue" id="wrapper">
+            <form class="countrySearch col s12 no-padding">
                 <div class="row valign-wrapper">
                     <div class="col s12">
-                        <div class="input-field white col s12">
+                        <div class="input-field white col s12" id="wrapper">
                             <i class="material-icons prefix">search</i>
                             <textarea id="search_input" class="materialize-textarea"></textarea>
                             <label for="search_input" class="active">Enter a country</label>
@@ -48,7 +47,7 @@
         {{#each user}}
             
         <div class="col s4 m4">
-            <div class="card white" id="card1" style="display:none;">
+            <div class="card white" id="card1">
                 <span class="card-content black-text">
                     <span class="card-title">{{ user_First_name }} {{ user_Last_name }}</span>
                             <img src="{{ user_pic_profile }}" alt="" class="circle-frame"> 
@@ -59,7 +58,7 @@
                         </div>
                         <div class="card-action">
                             
-                            <a href="/api/otheruser/{{ client_id }}">CHECK OUT PROFILE</a>
+                            <a class="waves-effect waves-light btn-small pink" id="searchSubmit"href="/api/otheruser/{{ client_id }}">CHECK OUT PROFILE</a>
                             
                         </div>
                         
@@ -75,8 +74,9 @@
     </div>
 
     <script>$(document).ready(function () {
-        $('div.card').fadeIn(1500);
-    });</script> 
+        $('div.card').show("slow");
+    });
+    </script> 
 
 
     <script src="http://www.webglearth.com/v2/api.js"></script>
