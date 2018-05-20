@@ -1,73 +1,87 @@
-{{!-- <div class="container"> --}}
-    <div id="earth-container"class="row">
+{{!--
+<div class="container"> --}}
+    <div id="earth-container" class="row">
         <div class="col s12 m12">
-            {{!-- <div id="earth_div" class="card-panel white" style="display:none"> --}}
+            {{!--
+            <div id="earth_div" class="card-panel white" style="display:none"> --}}
                 <div id="earth_div" style="height:500px">
-                {{!-- <span class="black-text">World Travel Map
-                    <img src="https://thumbs.dreamstime.com/b/hi-detail-blue-vector-political-world-map-illustration-high-cleverly-organized-layers-original-maps-cia-47581570.jpg" class="responsive-image worldMap">
-                </span> --}}
+                    {{!--
+                    <span class="black-text">World Travel Map
+                        <img src="https://thumbs.dreamstime.com/b/hi-detail-blue-vector-political-world-map-illustration-high-cleverly-organized-layers-original-maps-cia-47581570.jpg"
+                            class="responsive-image worldMap">
+                    </span> --}}
+                </div>
             </div>
         </div>
-    </div>
 
-    
+
         <div class="nav-wrapper blue">
             <form class="countrySearch col s12 no-padding ">
                 <div class="row valign-wrapper">
                     <div class="col s12">
-                        <div class="input-field white col s12">
-                            <i class="material-icons prefix">search</i>
+                    
+                            <i class="material-icons prefix">Select A Country</i>
+                            {{!--
                             <textarea id="search_input" class="materialize-textarea"></textarea>
-                            <label for="search_input" class="active">Enter a country</label>
-                    
+                            <label for="search_input" class="active">Enter a country</label> --}}
                             
-                        </div>
+                            <select id="search_select">
+
+                                
+
+
+                                {{#each country}}
+                                <option value={{location_name}}>{{location_name}}</option>
+                                {{/each}}
+                            </select>
+
+
+                        
                     </div>&emsp;
-                    
-                        <a class="waves-effect waves-light btn-small pink" id="searchSubmit">go!</a>
+
+                    <a class="waves-effect waves-light btn-small pink" id="searchSubmit">go!</a>
                 </div>
             </form>
-            
+
         </div>
-   
 
-    
 
-    <div class="row">
-        {{#each user}}
-            
-        <div class="col s4 m4">
-            <div class="card white" id="card1" style="display:none;">
-                <span class="card-content black-text">
-                    <span class="card-title">{{ user_First_name }} {{ user_Last_name }}</span>
-                            <img src="{{ user_pic_profile }}" alt="" class="circle-frame"> 
+
+
+        <div class="row">
+            {{#each user}}
+
+            <div class="col s4 m4">
+                <div class="card white" id="card1" style="display:none;">
+                    <span class="card-content black-text">
+                        <span class="card-title">{{ user_First_name }} {{ user_Last_name }}</span>
+                        <img src="{{ user_pic_profile }}" alt="" class="circle-frame">
                         <div class="card-content">
                             <p class="userPageStory">
                                 {{ user_bio_info }}
                             </p>
                         </div>
                         <div class="card-action">
-                            
+
                             <a href="/api/otheruser/{{ client_id }}">CHECK OUT PROFILE</a>
-                            
+
                         </div>
-                        
+
                         <!-- <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a> -->
-                    </ul>
-                </span>
+                        </ul>
+                    </span>
+                </div>
             </div>
+            {{/each}}
+
+
+
         </div>
-        {{/each}}
+
+        <script>$(document).ready(function () {
+                $('div.card').fadeIn(1500);
+            });</script>
 
 
-
-    </div>
-
-    <script>$(document).ready(function () {
-        $('div.card').fadeIn(1500);
-    });</script> 
-
-
-    <script src="http://www.webglearth.com/v2/api.js"></script>
-    <script src="/js/homePageSearch.js"></script>
- 
+        <script src="http://www.webglearth.com/v2/api.js"></script>
+        <script src="/js/homePageSearch.js"></script>

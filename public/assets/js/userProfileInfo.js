@@ -12,8 +12,6 @@ $(document).ready(function () {
     });
   });
 
-
-
   var map = AmCharts.makeChart("chartdiv", {
     "type": "map",
     "theme": "light",
@@ -31,36 +29,59 @@ $(document).ready(function () {
      */
     "listeners": [{
       "event": "clickMapObject",
-      "method": function (e) {
-
+      "method": function(e) {
+        
         // Ignore any click not on area
         if (e.mapObject.objectType !== "MapArea")
           return;
-
+        
         var area = e.mapObject;
-        console.log(area);
+        
         // Toggle showAsSelected
-        area.showAsSelected = !area.showAsSelected;
-        e.chart.returnInitialColor(area);
-
+       
+        
         // Update the list
-        document.getElementById("selected").innerHTML = JSON.stringify(getSelectedCountries());
+        selectAndSearchByCountry(e, area);
       }
     }]
   });
-
+  
   /**
    * Function which extracts currently selected country list.
    * Returns array consisting of country ISO2 codes
    */
-  function getSelectedCountries() {
+  function selectAndSearchByCountry(e, area) {
     var selected = [];
-    for (var i = 0; i < map.dataProvider.areas.length; i++) {
-      if (map.dataProvider.areas[i].showAsSelected)
-      console.log(map.dataProvider.areas[i]);
-        selected.push(map.dataProvider.areas[i].id);
+    for(var i = 0; i < map.dataProvider.areas.length; i++) {
+
+      // var location = {
+      //   location_name: map.dataProvider.areas[i].enTitle,
+      //   location_codes: map.dataProvider.areas[i].id
+      // }
+
+      // $.post("/api/populateLocations", location).then(function(data) {
+        
+        
+      //   // If there's an error, handle it by throwing up a bootstrap alert
+      // });
+
+
+
+      if(map.dataProvider.areas[i].showAsSelected){
+        map.dataProvider.areas[i].showAsSelected = false;
+        e.chart.returnInitialColor(map.dataProvider.areas[i]);
+      }
+     
+
     }
-    return selected;
+    area.showAsSelected = !area.showAsSelected;
+  
   }
+
+  
+
+
+
+
 
 });
