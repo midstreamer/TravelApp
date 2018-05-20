@@ -2,6 +2,12 @@
 $(document).ready(function () {
     console.log("We live");
 
+    $('select').formSelect();
+
+    $('select').on('contentChanged', function() {
+        $(this).formSelect();
+    });
+
 
 
     var earth;
@@ -48,7 +54,7 @@ $(document).ready(function () {
     function participantSearchHome() {
 
         event.preventDefault();
-        var search_input = $("#search_input").val().trim();
+        var search_input = $("#search_select").val();
         console.log(search_input)
 
         var newSearch_input = {
@@ -117,5 +123,6 @@ $(document).ready(function () {
         });
     })
 
+    
 
 });
