@@ -26,14 +26,35 @@
           <div class="row">
             <div class="col s12">
               <div class="card-panel white">
-                <span class="black-text">About Me
-                  <div id="story">
-                    <p class="userBio">
-                      {{ user.user_bio_info }}
-                    </p>
-
+                  <div class="header black-text">About Me<i id="aboutMeClick" class="material-icons">add_circle_outline</i></div>
+                  <div class="card-content">
+                      <p class="userBio">
+                        {{ user.user_bio_info }}
+                      </p>
                   </div>
-                </span>
+                
+
+                <div id="aboutMeToHide" class="card horizontal">
+                    <div class="card-stacked">
+                      <div class="card-content">
+                        <form class="col s12" action="/api/aboutme" method="POST">
+                          <div class="row">
+                            <div class="input-field col s12">
+                              <textarea id="newAboutMe" class="materialize-textarea"></textarea>
+                              <label for="newAboutMe">Tell us about yourself!</label>
+                              <i id='aboutMeCloseToHide' class="material-icons">close</i>
+                            </div>
+                          </div>
+                        </form>
+                              <button id="aboutMeSubmitBtn" class="btn waves-effect waves-light" type="submit" name="action" value="submit">Submit
+                                    <i class="material-icons right">send</i>
+                              </button>
+                      </div>
+                    </div>
+                </div>                     
+                                    
+              
+                
               </div>
             </div>
           </div>
@@ -77,21 +98,12 @@
               <h4 class="header white-text">My Stories</h4>
               <div class="row">
                 <div class="card horizontal">
-
-                  {{!--
-                  <div class="col s4"> --}}
                     <div class="card-image">
                       <img src="https://cdn.pixabay.com/photo/2018/05/13/17/18/paris-3397173_1280.jpg" alt="" class="card-image responsive-img storyImg">
                     </div>
-                    {{!-- </div> --}} {{!--
-                  <div class="col s8"> --}}
                     <div class="card-stacked">
                       <div class="card-content">
-
-
                         <h4 class="card-title">Story Title
-
-
                           <i class="material-icons right">more_vert</i>
                         </h4>
                         {{#each blog}} {{ dataValues.user_StoryList }}
@@ -252,3 +264,4 @@
           {{!-- </div> --}}
 
         <script src="/js/recommendations.js"></script>
+        <script src="/js/aboutMe.js"></script>
