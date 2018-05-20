@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
 	var user_location = sequelize.define("user_location", {
-        user_location: DataTypes.STRING(10000),
+        user_location: DataTypes.STRING(100),
     });
     
     user_location.associate = function(models) {
