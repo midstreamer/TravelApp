@@ -322,5 +322,20 @@ module.exports = function (app) {
 
 
 
-
+            app.get("/testing/shyt", function (req, res) {
+              db.user_location.findAll({
+                where: {
+                  user_location:'Armenia'
+                },
+               include:[{
+                 model:db.Blog, include: [db.Participants]
+               }]
+              })
+                .then(function (data) {
+                  res.json(data)
+                });
+            
+            });
+            
 };
+

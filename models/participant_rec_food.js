@@ -1,6 +1,9 @@
 module.exports = function (sequelize, DataTypes) {
 	var rec_food = sequelize.define("rec_food", {
         user_rec_food: DataTypes.STRING(100),
+    },
+    {
+        timestamps: false
     });
     
     rec_food.associate = function(models) {

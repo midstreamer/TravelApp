@@ -21,7 +21,11 @@ module.exports = function (sequelize, DataTypes) {
         user_password: DataTypes.STRING
 
 
-    });
+    },
+{
+    timestamps: false
+}
+);
 
 
     Participants.prototype.validPassword = function (password) {
@@ -50,6 +54,10 @@ module.exports = function (sequelize, DataTypes) {
             onDelete: "cascade"
         });
         Participants.hasMany(models.rec_eve, {
+            onDelete: "cascade"
+        });
+        
+        Participants.hasMany(models.user_location, {
             onDelete: "cascade"
         });
         // 
