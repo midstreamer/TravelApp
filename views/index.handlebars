@@ -16,25 +16,21 @@
                     <div class="col s12">
                         <div class="input-field white col s12" id="wrapper">
                             <i class="material-icons prefix">search</i>
-                            <textarea id="search_input" class="materialize-textarea"></textarea>
-                            <label for="search_input" class="active">Enter a country</label>
+                            {{!-- <textarea id="search_input" class="materialize-textarea"></textarea>
+                            <label for="search_input" class="active">Enter a country</label> --}}
 
                              
-                            {{!-- <select id="search_select">
-
-                                
-
-
+                            <select id="search_select">
+                                <option value="" disabled selected>Choose a country!</option>
                                 {{#each country}}
-                                <option value={{location_name}}>{{location_name}}</option>
+                                <option value={{location_name}} >{{location_name}}</option>
                                 {{/each}}
-                            </select> --}}
-                    
-                            
+                            </select>
+                            <label>Choose your country</label>
                         </div>
                     </div>&emsp;
                     
-                        <a class="waves-effect waves-light btn-small pink" id="searchSubmit">go!</a>
+                        <a class="waves-effect waves-light btn-small pink accent-1" id="searchSubmit">go!</a>
                 </div>
             </form>
             

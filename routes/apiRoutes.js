@@ -247,7 +247,24 @@ module.exports = function (app) {
 
   });
 
-
+  app.post("/api/aboutme",isLoggedIn, function (req, res) {
+    // console.log(req.body)
+    db.Participants.update({
+      user_bio_info:req.body.newBio_input
+    },
+    {
+      where: {
+      client_id: req.user
+      }
+      // ParticipantClientId:req.user --- if logged in
+        })
+    .then(function (data) {
+      res.json(data)
+      console.log(data)
+      
+    });
+  });
+ 
 
 //  app.post("/api/populateLocations", function (req, res) {
 //     db.location_Name_Code.create(req.body
@@ -305,6 +322,20 @@ module.exports = function (app) {
     }
     res.redirect('/login');
   }
+
+
+
+    // google ---------------------------------
+
+        // send to google to do the authentication
+        app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+
+        // the callback after google has authenticated the user
+        app.get('/auth/google/callback',
+            passport.authenticate('google', {
+                successRedirect : '/',
+                failureRedirect : '/'
+            }));
 
 
 
