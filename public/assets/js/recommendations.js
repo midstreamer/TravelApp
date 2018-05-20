@@ -119,14 +119,19 @@ $(document).ready(function () {
         }
 
 
+        $("#update").on("click", removeEvent);
 
-        $.post('/api/event/remove/:id', function(data, cb) {
-          }).then(function (data) {
-            if (data) {
-                alert("event was removed ");
-                location.reload();
-            }
-        });
+        function removeEvent(){
+            $.post('/api/event/remove/:id', function(data, cb) {
+          
+            }).then(function (data) {
+                if (data) {
+                    // alert("event was removed ");
+                    // location.reload();
+                }
+            });
+        }
+
           
 
 

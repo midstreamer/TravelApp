@@ -64,13 +64,9 @@
                 <div class="card-image">
                   <h1>Click countries to select</h1>
                   <div id="chartdiv"></div>
-<<<<<<< HEAD
-                  <div id="info">Selected countries: <span id="selected">-</span></div> 
-=======
                   <div id="info">Seletced countries:
                     <span id="selected">-</span>
                   </div>
->>>>>>> f14a633e5cc53f51fd2039c3adc8ea6839afc8b3
                 </div>
               </div>
             </div>
@@ -91,7 +87,7 @@
                   <div class="col s8"> --}}
                     <div class="card-stacked">
                       <div class="card-content">
-                        
+
 
                         <h4 class="card-title">Story Title
 
@@ -161,6 +157,12 @@
                   <li class="collection-item avatar">
                     <i class="material-icons circle green">local_dining</i>
                     <P>{{ dataValues.user_rec_food }}</P>
+
+                    <form id="updateFood" action="/api/food/remove/{{this.id}}" method="POST">
+                      <input type="hidden" name="toDelete">
+                      <button class="btn btn-danger" type="submit">delete</button>
+                    </form>
+
                   </li>
                   {{/each}}
                 </ul>
@@ -188,6 +190,12 @@
                   <li class="collection-item avatar">
                     <i class="material-icons circle blue">photo_camera</i>
                     <P>{{ dataValues.user_rec_att }}</P>
+
+                    <form id="updateAtt" action="/api/att/remove/{{this.id}}" method="POST">
+                      <input type="hidden" name="toDelete">
+                      <button class="btn btn-danger" type="submit">delete</button>
+                    </form>
+
                   </li>
                   {{/each}}
                 </ul>
@@ -212,10 +220,12 @@
                   <li class="collection-item avatar">
                     <i class="material-icons circle blue">photo_camera</i>
                     <P>{{dataValues.user_rec_eve}}</P>
+
                     <form id="update" action="/api/event/remove/{{this.id}}" method="POST">
                       <input type="hidden" name="toDelete">
                       <button class="btn btn-danger" type="submit">delete</button>
                     </form>
+
                   </li>
                   {{/each}}
                 </ul>

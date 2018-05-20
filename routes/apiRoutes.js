@@ -194,8 +194,30 @@ app.post('/api/event/remove/:id',isLoggedIn, function (req, res) {
     id: req.params.id
   }
 }).then(function (data) {
-  res.json(data)
-
+  res.redirect("/api/myprofile/"+req.user)
+// res.json(data)
+});
+})
+app.post('/api/food/remove/:id',isLoggedIn, function (req, res) {
+  console.log(req.params.id)
+  db.rec_food.destroy({
+    where:{
+    id: req.params.id
+  }
+}).then(function (data) {
+  res.redirect("/api/myprofile/"+req.user)
+// res.json(data)
+});
+})
+app.post('/api/att/remove/:id',isLoggedIn, function (req, res) {
+  console.log(req.params.id)
+  db.rec_att.destroy({
+    where:{
+    id: req.params.id
+  }
+}).then(function (data) {
+  res.redirect("/api/myprofile/"+req.user)
+// res.json(data)
 });
 })
 
@@ -203,9 +225,6 @@ app.post('/api/event/remove/:id',isLoggedIn, function (req, res) {
 
 
 app.post("/api/create/events",isLoggedIn, function (req, res) {
-//  console.log("event**********************")
-//   console.log(req.body)
-//   console.log("event**********************")
 
   db.rec_eve.create({
     user_rec_eve:req.body.newEvents_input,
@@ -214,8 +233,6 @@ app.post("/api/create/events",isLoggedIn, function (req, res) {
       })
   .then(function (data) {
     res.json(data)
-    
-    
   });
 
 });
