@@ -10,17 +10,26 @@
         </div>
     </div>
 
-    <div class="row">
-        <form class="col s12">
-            <div class="row">
-                <div class="input-field white col s6 center-align">
-                    <i class="material-icons prefix">mode_edit</i>
-                    <textarea id="search_input" class="materialize-textarea"></textarea>
-                    <a class="waves-effect waves-light btn-small" id="searchSubmit">Button</a>
+    
+        <div class="nav-wrapper blue">
+            <form class="countrySearch col s12 no-padding ">
+                <div class="row valign-wrapper">
+                    <div class="col s12">
+                        <div class="input-field white col s12">
+                            <i class="material-icons prefix">search</i>
+                            <textarea id="search_input" class="materialize-textarea"></textarea>
+                            <label for="search_input" class="active">Enter a country</label>
+                    
+                            
+                        </div>
+                    </div>&emsp;
+                    
+                        <a class="waves-effect waves-light btn-small pink" id="searchSubmit">go!</a>
                 </div>
-            </div>
-        </form>
-    </div>
+            </form>
+            
+        </div>
+   
 
     
 
@@ -31,22 +40,12 @@
             <div class="card white" id="card1" style="display:none;">
                 <span class="card-content black-text">
                     <span class="card-title">{{ user_First_name }} {{ user_Last_name }}</span>
-                    {{!-- <ul class="collection avatar"> --}}
-                        {{!-- <li class="collection-item avatar"> --}}
                             <img src="{{ user_pic_profile }}" alt="" class="circle-frame"> 
-                            {{!-- <span>
-                                {{ user_First_name }}
-                            </span>
-                          
-                            <span>
-                                {{ user_Last_name }}
-                            </span> --}}
-                        </li> 
-                        {{!-- <ul> --}}
+                        <div class="card-content">
                             <p class="userPageStory">
                                 {{ user_bio_info }}
                             </p>
-                        {{!-- </ul> --}}
+                        </div>
                         <div class="card-action">
                             
                             <a href="/api/otheruser/{{ client_id }}">CHECK OUT PROFILE</a>
