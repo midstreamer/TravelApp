@@ -105,6 +105,51 @@ body{
   top: -100px;
 }
 
+
+.responsive-img {
+ 
+    animation-name: bounceIn;
+    animation-duration: 600ms;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+}
+.card-stacked{
+  
+    animation-name: bounceIn;
+    animation-duration: 600ms;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+}
+
+.card-panel.white {
+  
+    animation-name: bounceIn;
+    animation-duration: 600ms;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+}
+.card-image {
+ 
+ 
+    animation-name: bounceIn;
+    animation-duration: 600ms;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+}
+.card.horizontal {
+  
+  
+    animation-name: bounceIn;
+    animation-duration: 600ms;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+}
+
 @keyframes bounceIn{
   0%{
     opacity: 0;
@@ -143,7 +188,7 @@ body{
   top: 35px;
 }
 #navbar {
-  border-radius:75px; font-size:12px;"
+  border-radius:50px; font-size:12px;"
   margin: auto;
   animation-name: bounceIn;
   animation-duration: 600ms;
