@@ -255,7 +255,24 @@ app.get("/api/getClientId",isLoggedIn, function(req, res) {
 
 });
 
+app.post("/api/aboutme",isLoggedIn, function (req, res) {
+  // console.log(req.body)
+  db.Participants.update({
+    user_bio_info:req.body.newBio_input
+  },
+  {
+    where: {
+    client_id: req.user
+    }
+    // ParticipantClientId:req.user --- if logged in
+      })
+  .then(function (data) {
+    res.json(data)
+    console.log(data)
+    
+  });
 
+});
 
 
 };
