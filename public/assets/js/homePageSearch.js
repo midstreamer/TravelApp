@@ -8,7 +8,7 @@ $(document).ready(function () {
         $(this).formSelect();
     });
 
-    var userArray = [];
+    
 
     var earth;
     var keepAnimating = true;
@@ -65,6 +65,11 @@ $(document).ready(function () {
             // console.log(data)
         }
         ).then(function (data) {
+
+
+
+
+
             if (data) {
 
                 $.ajax({
@@ -80,7 +85,7 @@ $(document).ready(function () {
                     }
                 });
 
-                
+                var userArray = [];
 
                 for(var i = 0; i <data.length; i++){
                             
@@ -89,6 +94,39 @@ $(document).ready(function () {
                       userArray.push(data[i].Blogs[j].Participant)
                   }
                 }
+
+
+
+
+        //         <div class="col s2 m6">
+        //     <div class="card grey text-darken-4" id="card1">
+        //         <span class="card-content black-text">
+        //             <span class="card-title" id="cardTitle">{{ user_First_name }} {{ user_Last_name }}</span>
+        //                     <img src="{{ user_pic_profile }}" alt="" class="circle-frame"> 
+        //                 <div class="card-content">
+        //                     <p class="userPageStory">
+        //                         {{ user_bio_info }}
+        //                     </p>
+        //                 </div>
+        //                 <div class="card-action">
+                            
+        //                     <a class="waves-effect waves-light btn-small pink" id="searchSubmit"href="/api/otheruser/{{ client_id }}">CHECK OUT PROFILE</a>
+                            
+        //                 </div><br>
+                        
+        //                 <!-- <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a> -->
+        //             </ul>
+        //         </span>
+        //     </div>
+        // </div>
+
+                var searchContainer = $("#search-result-container");
+                searchContainer.empty();
+                var htmlString = "";
+                userArray.forEach(function(user){
+                    htmlString+='<div class="col s2 m6"><div class="card grey text-darken-4" id="card1"><span class="card-content black-text"><span class="card-title" id="cardTitle">'+user.user_First_name + ' ' + user.user_Last_name+ '</span><img src="'+user.user_pic_profile+'" alt="" class="circle-frame"> <div class="card-content"><p class="userPageStory"> '+user.user_bio_info+' </p></div> <div class="card-action"><a class="waves-effect waves-light btn-small pink" id="searchSubmit"href="/api/otheruser/'+user.client_id+'">CHECK OUT PROFILE</a> </div><br><!-- <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a> --></ul></span></div></div>';
+                  });
+                  searchContainer.html(htmlString);
             }
             else{
                 alert("No blogs for that location");
