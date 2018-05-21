@@ -54,7 +54,7 @@ $(document).ready(function () {
     var selected = [];
     for (var i = 0; i < map.dataProvider.areas.length; i++) {
 
-      if (map.dataProvider.areas[i].showAsSelected) {
+      if (map.dataProvider.areas[i].showAsSelected && (map.dataProvider.areas[i].id!=area.id)) {
         map.dataProvider.areas[i].showAsSelected = false;
         e.chart.returnInitialColor(map.dataProvider.areas[i]);
       }
@@ -62,42 +62,64 @@ $(document).ready(function () {
 
     }
 
+
+
     area.showAsSelected = !area.showAsSelected;
 
-    $.get("/api/profile/search/" + area.enTitle, function (data, cb) {
-      // console.log(data)
-    })
-      .then(function (data) {
+    if(area.showAsSelected){
 
-        if (data) {
+      $.get("/api/profile/search/" + area.enTitle, function (data, cb) {
+        // console.log(data)
+      })
+        .then(function (data) {
 
           console.log(data);
-          // var userArray =[];
-          // for (var i = 0; i < data.length; i++) {
+  
+          if (data) {
+            // console.log(data);
+            // var userArray =[];
+  
+            var blogArray = [];
+            for (var i = 0; i < data.length; i++) {
+  
+  
+              for (var j = 0; j < data[i].Blogs.length; j++) {
 
 
-          //   for (var j = 0; j < data[i].Blogs.length; j++) {
-          //     userArray.push(data[i].Blogs[j].Participant)
-          //   }
-          // }
-          // var searchContainer = $("#search-result-container");
-          // searchContainer.empty();
-          // var htmlString = "";
-          // userArray.forEach(function(user){
-          //     htmlString+='<div class="col s2 m6"><div class="card grey text-darken-4" id="card1"><span class="card-content black-text"><span class="card-title" id="cardTitle">'+user.user_First_name + ' ' + user.user_Last_name+ '</span><img src="'+user.user_pic_profile+'" alt="" class="circle-frame"> <div class="card-content"><p class="userPageStory"> '+user.user_bio_info+' </p></div> <div class="card-action"><a class="waves-effect waves-light btn-small pink" id="searchSubmit"href="/api/otheruser/{{ client_id }}">CHECK OUT PROFILE</a> </div><br><!-- <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a> --></ul></span></div></div>';
-          //   });
-          //   searchContainer.html(htmlString);
+                if(data[i].Blogs[j].ParticipantClientId===parseInt($("#get-blog-user").text())){
+                  blogArray.push(data[i].Blogs[j]);
+                }
+  
+                
+                
+              }
+            }
+  
+  
+            var blogContainer = $("#user-profile-blog-container");
+            blogContainer.empty();
+  
+            var htmlString = '<h4 class="header white-text">My Stories</h4>';
+            blogArray.forEach(function(blog){
+  
+              console.log(blog.user_Storylist);
+              htmlString +='<div class="row"><div class="card horizontal col s12"><div><div class="row"><div class="card-image col s6"><img src="https://cdn.pixabay.com/photo/2018/05/13/17/18/paris-3397173_1280.jpg" alt="" class="card-image responsive-img storyImg"></div><div class="col s6"><h4 class="card-title">'+blog.user_title+'<i class="material-icons right">more_vert</i></h4></div></div><div class="row"><div  class="card-stacked"><p>'+blog.user_StoryList+'</p></div><div class="card-action"><a href="/api/blog/{{ user.client_id }}" target="_blank">Read Story</a></div></div></div></div></div>';
+            })
+  
+            blogContainer.html(htmlString);
+  
+  
+  
+          }
+          else {
+            alert("No blogs for that location");
+          }
+  
+        });
+      
+    }
 
-          
-
-
-
-        }
-        else {
-          alert("No blogs for that location");
-        }
-
-      });
+   
 }
 
 });

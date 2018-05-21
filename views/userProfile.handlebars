@@ -1,6 +1,7 @@
 {{!--
 <div class="container"> --}}
   <div class="section">
+
     <div class="row">
       <div class="col s4 m4">
         <div class="icon-block">
@@ -73,29 +74,44 @@
           </div>
 
           <section>
-            <div class="col s12">
+            <div id="user-profile-blog-container" class="col s12">
               <h4 class="header white-text">My Stories</h4>
+              {{#each blog}}
+
               <div class="row">
-                <div class="card horizontal">
+                <div class="card horizontal col s12">
 
-                  {{!--
-                  <div class="col s4"> --}}
-                    <div class="card-image">
-                      <img src="https://cdn.pixabay.com/photo/2018/05/13/17/18/paris-3397173_1280.jpg" alt="" class="card-image responsive-img storyImg">
-                    </div>
 
-                      <div class="card-stacked">
-                        <h4 class="card-title">Story Title
+                  <div>
+                    <div class="row">
+                      <div class="card-image col s6">
+                        <img src="https://cdn.pixabay.com/photo/2018/05/13/17/18/paris-3397173_1280.jpg" alt="" class="card-image responsive-img storyImg">
+                      </div>
+                      <div class="col s6">
+                        <h4 class="card-title">{{ dataValues.user_title}}
                           <i class="material-icons right">more_vert</i>
                         </h4>
-                        {{#each blog}} {{ dataValues.user_StoryList }} {{/each}}
+                      </div>
+                    </div>
+
+                    <div class="row">
+
+                      <div  class="card-stacked">
+
+
+
+                        <p>{{ dataValues.user_StoryList }} </p>
+
                       </div>
                       <div class="card-action">
                         <a href="/api/blog/{{ user.client_id }}" target="_blank">Read Story</a>
                       </div>
                     </div>
+                  </div>
+
                 </div>
               </div>
+              {{/each}}
             </div>
           </section>
 
@@ -171,7 +187,8 @@
 
       <!-- section -->
     </div>
-   
-    </div>
 
-    <script src="/js/userProfileInfo.js"></script>
+  </div>
+  <p id="get-blog-user" style="opacity:0.0;">{{blogUserId}}</p>
+
+  <script src="/js/userProfileInfo.js"></script>
