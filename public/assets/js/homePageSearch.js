@@ -62,13 +62,10 @@ $(document).ready(function () {
         }
        
         $.get("/api/homepage/search/"+search_input, function (data, cb) {
+            
             // console.log(data)
         }
         ).then(function (data) {
-
-
-
-
 
             if (data) {
 

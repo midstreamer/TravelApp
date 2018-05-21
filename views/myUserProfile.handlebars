@@ -12,7 +12,7 @@
                   <img src="{{ user.user_pic_profile }}" alt="" class="responsive-img">
                 </div>
                 <div class="card-stacked">
-                  <div class="card-content">
+                  <div class="card-content" id="username">
                     <p>
                       {{ user.user_First_name }} {{ user.user_Last_name }}
                     </p>
@@ -165,130 +165,138 @@
             </div>
           </section>
 
-          {{!--
-          <div class="row">
-            <div class="col s12 m12">
-              <div class="card-panel white">
-                <span class="black-text">Stories
-                  <ul class="collection">
-                    <li class="collection-item avatar">
-                      <img src="" alt="" class="circle">
-                      <span>Story Title</span>
-                    </li>
-                    <li>
-                      <p class="userPageStory">I'm a cool story. I like to talk about myself. I did some really cool things. I like to talk about
-                        the really cool things that I did. Please. Please Read me.</p>
-                    </li>
-                    <div class="card-action">
-
-                      <a href="/api/blog/{{ user.client_id }}" target="_blank">Read Story</a>
-
-                    </div>
-                  </ul>
-                </span>
-              </div>
-            </div>
-          </div> --}}
-
           <div class="row">
             <div class="col s12">
-              <div class="card-panel white">
-                <h4 class="title">Recommendations</h4>
+              {{!-- <div class="card-panel white"> --}}
+                <h4 class="title white-text">&nbsp;Recommendations</h4>
 
-                {{!-- food --}}
-                <ul class="collection with-header">
-                  <li class="collection-header">
-                    <h5>Restaurants/Dining
-                      <i id="foodClick" class="material-icons">add_circle_outline</i>
-                    </h5>
-                    <div id='foodToHide' class="row">
-                      <i id='foodCloseToHide' class="material-icons">close</i>
+{{!-- food --}}
+                <div class="col s6">
+                  <div class="card hoverable" style="overflow:hidden">
+                    <h5>&emsp;Restaurants/Dining
+                    <a class="btn-floating btn-move-up waves-effect waves-light btn-small red right"><i id="foodClick" class="material-icons activator">mode_edit</i></a></h5>
+                    
+                      <div class="card-content">
+                      <ul class="collection">
+                        {{#each food}}
+                        <li class="collection-item avatar valign-wrapper">
+                          <i class="material-icons circle green left">local_dining</i>
+                          <P>{{ dataValues.user_rec_food }}</P>
+                          
 
-                      <div class="input-field col s4">
+                        </li>
+                        <form id="updateFood" action="/api/food/remove/{{this.id}}" method="POST">
+                            <input type="hidden" name="toDelete">
+                            <button class="btn btn-danger" type="submit">delete</button>
+                          </form>
+                        {{/each}}
+                      </ul> 
+                       
+                    </div>
+                    <div class="card-reveal" style="overflow:hidden">
+                    
+                      <h6>Add a new recommendation:</h6>
+                      
+                    <div id='foodToHide'>
+                    <span class="card-title" id="doneBtn"><a class="btn-floating waves-effect waves-light btn-small red"><i id='foodCloseToHide' class="material-icons right">close</i></a></span>   
+
+                      <div class="input-field col s12">
                         <textarea id="food_input" class="materialize-textarea"></textarea>
                         <label class="active" for="Food">Food</label>
                         <a id="foodOnSubmit" class="waves-effect waves-light btn-small">Add</a>
                       </div>
+                      
+                    </div> 
+                        
                     </div>
-                  </li>
-                  {{#each food}}
-                  <li class="collection-item avatar">
-                    <i class="material-icons circle green">local_dining</i>
-                    <P>{{ dataValues.user_rec_food }}</P>
-
-                    <form id="updateFood" action="/api/food/remove/{{this.id}}" method="POST">
-                      <input type="hidden" name="toDelete">
-                      <button class="btn btn-danger" type="submit">delete</button>
-                    </form>
-
-                  </li>
-                  {{/each}}
-                </ul>
+                  </div>
+                </div>
+                
                 {{!--Attractions --}}
-                <ul class="collection with-header">
-                  <li class="collection-header">
-                    <h5>Attractions
-                      <i id="attractionsClick" class="material-icons">add_circle_outline</i>
-                    </h5>
+                <div class="col s6">
+                  <div class="card hoverable" style="overflow:hidden">
+                    <h5>&emsp;Attractions
+                    <a class="btn-floating btn-move-up waves-effect waves-light btn-small red right"><i id="attractionsClick" class="material-icons activator">mode_edit</i></a></h5>
+                    
+                      <div class="card-content">
+                      <ul class="collection">
+                        {{#each attractions}}
+                        <li class="collection-item avatar valign-wrapper">
+                          <i class="material-icons circle red left">photo_camera</i>
+                          <P>{{ dataValues.user_rec_att }}</P>
+                          
 
-                    {{!-- --}}
+                        </li>
+                        <form id="updateAtt" action="/api/att/remove/{{this.id}}" method="POST">
+                            <input type="hidden" name="toDelete">
+                            <button class="btn btn-danger" type="submit">delete</button>
+                          </form>
+                        {{/each}}
+                      </ul> 
+                       
+                    </div>
+                    <div class="card-reveal" style="overflow:hidden">
+                    
+                      <h6>Add a new recommendation:</h6>
+                      
+                    <div id='attractionsToHide'>
+                    <span class="card-title" id="doneBtn"><a class="btn-floating waves-effect waves-light btn-small red"><i id='AttractionsCloseToHide' class="material-icons right">close</i></a></span>   
 
-
-                    <div id='attractionsToHide' class="row">
-                      <i id='AttractionsCloseToHide' class="material-icons">close</i>
-                      <div class="input-field col s4">
+                      <div class="input-field col s12">
                         <textarea id="attractions_input" class="materialize-textarea"></textarea>
                         <label class="active" for="attractions">attractions</label>
                         <a id="attractionsOnSubmit" class="waves-effect waves-light btn-small">Add</a>
                       </div>
+                      
+                    </div> 
+                        
                     </div>
-                    {{!-- --}}
-                  </li>
-                  {{#each attractions }}
-                  <li class="collection-item avatar">
-                    <i class="material-icons circle blue">photo_camera</i>
-                    <P>{{ dataValues.user_rec_att }}</P>
+                  </div>
+                </div>
 
-                    <form id="updateAtt" action="/api/att/remove/{{this.id}}" method="POST">
-                      <input type="hidden" name="toDelete">
-                      <button class="btn btn-danger" type="submit">delete</button>
-                    </form>
-
-                  </li>
-                  {{/each}}
-                </ul>
                 {{!-- Events --}}
-                <ul class="collection with-header">
-                  <li class="collection-header">
-                    <h5>Events
-                      <i id="eventsClick" class="material-icons">add_circle_outline</i>
-                    </h5>
-                    {{!-- --}}
-                    <div id='eventsToHide' class="row">
-                      <i id='eventsCloseToHide' class="material-icons">close</i>
-                      <div class="input-field col s4">
+                <div class="col s6">
+                  <div class="card hoverable" style="overflow:hidden">
+                    <h5>&emsp;Events
+                    <a class="btn-floating btn-move-up waves-effect waves-light btn-small red right"><i id="eventsClick" class="material-icons activator">mode_edit</i></a></h5>
+                    
+                      <div class="card-content">
+                      <ul class="collection">
+                        {{#each events}}
+                        <li class="collection-item avatar valign-wrapper">
+                          <i class="material-icons circle blue left">photo_camera</i>
+                          <P>{{ dataValues.user_rec_eve }}</P>
+                          
+
+                        </li>
+                        <form id="update" action="/api/event/remove/{{this.id}}" method="POST">
+                            <input type="hidden" name="toDelete">
+                            <button class="btn btn-danger" type="submit">delete</button>
+                          </form>
+                        {{/each}}
+                      </ul> 
+                       
+                    </div>
+                    <div class="card-reveal" style="overflow:hidden">
+                    
+                      <h6>Add a new recommendation:</h6>
+                      
+                    <div id='eventsToHide'>
+                    <span class="card-title" id="doneBtn"><a class="btn-floating waves-effect waves-light btn-small red"><i id='eventsCloseToHide' class="material-icons right">close</i></a></span>   
+
+                      <div class="input-field col s12">
                         <textarea id="events_input" class="materialize-textarea"></textarea>
                         <label class="active" for="events">events</label>
                         <a id="eventsOnSubmit" class="waves-effect waves-light btn-small">Add</a>
                       </div>
+                      
+                    </div> 
+                        
                     </div>
-                    {{!-- --}}
-                  </li>
-                  {{#each events }}
-                  <li class="collection-item avatar">
-                    <i class="material-icons circle blue">photo_camera</i>
-                    <P>{{dataValues.user_rec_eve}}</P>
-
-                    <form id="update" action="/api/event/remove/{{this.id}}" method="POST">
-                      <input type="hidden" name="toDelete">
-                      <button class="btn btn-danger" type="submit">delete</button>
-                    </form>
-
-                  </li>
-                  {{/each}}
-                </ul>
-
-
+                  </div>
+                </div>
+              {{!-- </div> --}}
+               
                 <!-- icon block -->
               </div>
               <!-- col s9 -- >
@@ -298,8 +306,7 @@
 
             <!-- section -->
           </div>
-          <!-- container -->
-          {{!-- </div> --}}
+          
 
         <script src="/js/recommendations.js"></script>
         <script src="/js/aboutMe.js"></script>

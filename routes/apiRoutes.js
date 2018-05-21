@@ -144,7 +144,7 @@ module.exports = function (app) {
       .then(function (data) {
 
         res.json(data);
-
+        
         
       });
   

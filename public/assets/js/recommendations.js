@@ -4,6 +4,10 @@
 
 $(document).ready(function () {
 
+    
+    //for rating 
+    $('.tooltipped').tooltip({ delay: 50 }); 
+    // FOOD
 
 
     var map = AmCharts.makeChart("chartdiv", {
