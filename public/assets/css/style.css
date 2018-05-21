@@ -104,6 +104,14 @@ body{
   top: -100px;
 }
 
+.logo-container {
+  font-family: 
+  font-style: oblique;
+	font-size: 24px;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
+}
 
 .responsive-img {
  
@@ -122,6 +130,10 @@ body{
     animation-delay: 1s;
 }
 
+canvas {
+  display: inline-block;
+  background-image: url("./images/space.jpg");
+}
 .card-panel.white {
   
     animation-name: bounceIn;
