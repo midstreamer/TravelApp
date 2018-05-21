@@ -167,6 +167,26 @@ module.exports = function (app) {
       });
   
   });
+
+  app.get("/api/myprofile/search/:location", function (req, res) {
+    db.user_location.findAll({
+      where: {
+        user_location:req.params.location,
+      },
+     include:[{
+       model:db.Blog, include: [db.Participants]
+     }]
+    })
+      .then(function (data) {
+
+        data.push(req.user)
+
+        res.json(data);
+        
+      });
+  
+  });
+  
   
   
 
