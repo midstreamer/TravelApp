@@ -67,7 +67,7 @@
       $('div.card-panel').fadeIn(2200);
 
       $("#logout").on("click", function () {
-
+        console.log("clicked logout");
         $.get("/logout", function (data) {
           console.log("back from logout");
           window.location = ("/");
