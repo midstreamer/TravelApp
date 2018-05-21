@@ -26,17 +26,35 @@
           <!-- <h5 class="center">Speeds up development</h5> -->
           <div class="row">
             <div class="col s12">
-              <div class="card-panel white">
-                <span class="black-text">About Me
-                  <div id="story">
-                    <p class="userBio">
-                      {{ user.user_bio_info }}
-                    </p>
+                  <div class="card large hoverable" style="overflow:auto">
+                    <h5 >&emsp;About Me
+                    <a class="btn-floating btn-move-up waves-effect waves-light btn-small red right"><i id="aboutMeClick" class="material-icons activator">mode_edit</i></a></h5>
+                      <br>
+                      <br>
+                      <div class="card-content">
+                      <p class="userBio">
+                        {{ user.user_bio_info }}
+                      </p>
+                      </div> 
+                       
+                    <div class="card-reveal" style="overflow:auto">
+                    
+                      <h6>About Me</h6>
+                      
+                    <div id='aboutMeToHide'>
+                    <span class="card-title" id="doneBtn"><a class="btn-floating waves-effect waves-light btn-small red"><i id='aboutMeCloseToHide' class="material-icons right">close</i></a></span>   
 
+                      <div class="input-field col s12">
+                        <textarea id="newAboutMe" class="materialize-textarea"></textarea>
+                        <label class="active" for="newAboutMe">Tell us about yourself!</label>
+                        <a id="aboutMeSubmitBtn" class="waves-effect waves-light btn-small">Add</a>
+                      </div>
+                      
+                    </div> 
+                        
+                    </div>
                   </div>
-                </span>
-              </div>
-            </div>
+                </div>
           </div>
           <div class="row">
             <div class="col s12">
@@ -104,7 +122,7 @@
 
                       </div>
                       <div class="card-action">
-                        <a href="/api/blog/{{ user.client_id }}" target="_blank">Read Story</a>
+                        <a href="/api/blog/{{ user.client_id }}" >Read Story</a>
                       </div>
                     </div>
                   </div>
