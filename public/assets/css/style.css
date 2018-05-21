@@ -99,18 +99,19 @@ body{
   top: -35px;
   margin: -5px;
 }
+
 .card-action{
   position: relative;
   top: -100px;
 }
 
-.logo-container {
-  font-family: 
-  font-style: oblique;
-	font-size: 24px;
-	font-variant: normal;
-	font-weight: 500;
-	line-height: 26.4px;
+#logo-container {
+    font: 400 45px/1.5 'Pacifico', Helvetica, sans-serif;
+    color: #2b2b2b;
+    text-shadow: 3px 3px 0px rgba(0,0,0,0.1), 7px 7px 0px rgba(0,0,0,0.05);
+    position: relative;
+    top: -10px;
+  
 }
 
 .responsive-img {
