@@ -43,7 +43,7 @@ module.exports = function (app) {
       },
       include: [db.Blog, db.rec_food, db.rec_att, db.rec_eve]
     }).then(function (dbParticipants) {
-      res.render("userProfile", { user: dbParticipants.dataValues, blog: dbParticipants.dataValues.Blogs, food: dbParticipants.dataValues.rec_foods, attractions: dbParticipants.dataValues.rec_atts, events: dbParticipants.dataValues.rec_eves });
+      res.render("userProfile", { blogUserId: req.params.id, user: dbParticipants.dataValues, blog: dbParticipants.dataValues.Blogs, food: dbParticipants.dataValues.rec_foods, attractions: dbParticipants.dataValues.rec_atts, events: dbParticipants.dataValues.rec_eves });
       // console.log(dbParticipants.dataValues.rec_eves[0])
     });
   });
@@ -144,7 +144,7 @@ module.exports = function (app) {
       .then(function (data) {
 
         res.json(data);
-
+        
         
       });
   
@@ -163,7 +163,6 @@ module.exports = function (app) {
       .then(function (data) {
 
         res.json(data);
-
         
       });
   
