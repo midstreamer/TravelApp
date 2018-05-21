@@ -66,15 +66,7 @@ $(document).ready(function () {
             // console.log(data)
         }
         ).then(function (data) {
-<<<<<<< HEAD
-            
-=======
 
-
-
-
-
->>>>>>> e7a4f97f176be96c8e165bb55aaad463e626ee68
             if (data) {
 
                 $.ajax({
