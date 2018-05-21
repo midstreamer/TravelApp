@@ -22,6 +22,11 @@ module.exports = function (app) {
     });
   });
 
+
+
+
+
+
   app.get("/api/getCountries", isLoggedIn, function (req, res) {
     // console.log(req.user);
     db.location_Name_Code.findAll({
@@ -115,18 +120,36 @@ module.exports = function (app) {
   });
 
 
-  app.get("/api/homepage/search", isLoggedIn, function (req, res) {
-    // console.log(req.query.newSearch_input)
+  // app.get("/api/homepage/search/:location", isLoggedIn, function (req, res) {
+  //   // console.log(req.query.newSearch_input)
+  //   db.user_location.findAll({
+  //     where: {
+  //       user_location: req.query.newSearch_input
+  //     },
+  //     include: [db.Participants],
+  //   }).then(function (dbUser_location) {
+  //     res.json(dbUser_location);
+  //     // console.log(dbParticipants.dataValues.Blogs[0].dataValues.user_StoryList)
+  //   });
+  // });
+  app.get("/api/homepage/search/:location", function (req, res) {
     db.user_location.findAll({
       where: {
-        user_location: req.query.newSearch_input
+        user_location:req.params.location
       },
-      include: [db.Participants],
-    }).then(function (dbUser_location) {
-      res.json(dbUser_location);
-      // console.log(dbParticipants.dataValues.Blogs[0].dataValues.user_StoryList)
-    });
+     include:[{
+       model:db.Blog, include: [db.Participants]
+     }]
+    })
+      .then(function (data) {
+
+        res.json(data);
+
+        
+      });
+  
   });
+  
 
 
 
@@ -339,20 +362,6 @@ module.exports = function (app) {
 
 
 
-            app.get("/testing/shyt", function (req, res) {
-              db.user_location.findAll({
-                where: {
-                  user_location:'Armenia'
-                },
-               include:[{
-                 model:db.Blog, include: [db.Participants]
-               }]
-              })
-                .then(function (data) {
-                  res.json(data)
-                });
-            
-            });
             
 };
 
