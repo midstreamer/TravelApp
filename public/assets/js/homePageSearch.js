@@ -8,7 +8,7 @@ $(document).ready(function () {
         $(this).formSelect();
     });
 
-
+    var userArray = [];
 
     var earth;
     var keepAnimating = true;
@@ -55,13 +55,13 @@ $(document).ready(function () {
 
         event.preventDefault();
         var search_input = $("#search_select").val();
-        console.log(search_input)
+        console.log("search input", search_input);
 
         var newSearch_input = {
             newSearch_input: search_input
         }
-        console.log(search_input)
-        $.get("/api/homepage/search", newSearch_input, function (data, cb) {
+       
+        $.get("/api/homepage/search/"+search_input, function (data, cb) {
             // console.log(data)
         }
         ).then(function (data) {
@@ -70,27 +70,28 @@ $(document).ready(function () {
                 $.ajax({
                     url: "https://maps.googleapis.com/maps/api/geocode/json?address="+search_input+"&key=AIzaSyBNoUFS9OOH34ztpgmTmcvb8DPYEBCxxlc", success: function (result) {
                         // console.log(result.results[0].geometry.location);
-                        if(data.user_location){
+                        
                             keepAnimating = false;
 
                             dropMarker(result.results[0].geometry.location.lat, result.results[0].geometry.location.lng);
                             earth.panTo([result.results[0].geometry.location.lat, result.results[0].geometry.location.lng]);
-
-                            // $( "#earth-container" ).animate({
-                            //     opacity: 0.25,
-                            //     left: "+=50",
-                            //     height: "toggle"
-                            //   }, 5000, function() {
-                            //     // Animation complete.
-                            //   });
-                        }
                         
                         
                     }
                 });
 
                 
-                // console.log(data)
+
+                for(var i = 0; i <data.length; i++){
+                            
+        
+                  for(var j = 0; j < data[i].Blogs.length; j++){
+                      userArray.push(data[i].Blogs[j].Participant)
+                  }
+                }
+            }
+            else{
+                alert("No blogs for that location");
             }
         });
 
