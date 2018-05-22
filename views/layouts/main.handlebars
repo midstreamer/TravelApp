@@ -71,7 +71,6 @@
       $("#logout").on("click", function () {
         console.log("clicked logout");
         $.get("/logout", function (data) {
-          console.log("back from logout");
           window.location = ("/");
         });
       });

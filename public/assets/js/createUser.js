@@ -2,7 +2,12 @@ $(document).ready(function () {
     console.log("check")
 
    
+    $("#navigate-to-login").on("click", function(event) {
+        window.location = ("/login");
+      });
 
+
+      
     $("#submit").on("click", yo);
     // var participant_pic
 

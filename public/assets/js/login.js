@@ -4,7 +4,9 @@ $(document).ready(function() {
     var emailInput = $("input#email-input");
     var passwordInput = $("input#password-input");
 
-    
+    $("#navigate-to-sign-up").on("click", function(event) {
+      window.location = ("/createUser");
+    });
   
     // When the form is submitted, we validate there's an email and password entered
     $("#login-button").on("click", function(event) {
@@ -35,10 +37,14 @@ $(document).ready(function() {
 
         console.log(data);
 
-        if(data.search("<title>Passport Authentication</title>")>=0){
+        if(data.search("<title>Login Page</title>")>=0){
 
+          $("#login-error").css("visibility", "visible");
+
+
+          setTimeout(function(){ window.location = ("/login"); }, 3000);
          
-          window.location = ("/login");
+          
 
         }
         else if(data.search(" <title>Yaatra Home</title>")>=0){

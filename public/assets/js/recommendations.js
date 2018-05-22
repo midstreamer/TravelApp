@@ -97,8 +97,7 @@ $(document).ready(function () {
                 var htmlString = '<h4 class="header white-text">My Stories</h4>';
                 blogArray.forEach(function(blog){
       
-                  console.log(blog.user_Storylist);
-                  htmlString +='<div class="row"><div class="card horizontal col s12"><div><div class="row"><div class="card-image col s6"><img src="https://cdn.pixabay.com/photo/2018/05/13/17/18/paris-3397173_1280.jpg" alt="" class="card-image responsive-img storyImg"></div><div class="col s6"><h4 class="card-title">'+blog.user_title+'<i class="material-icons right">more_vert</i></h4></div></div><div class="row"><div  class="card-stacked"><p>'+blog.user_StoryList+'</p></div><div class="card-action"><a href="/api/blog/{{ user.client_id }}" target="_blank">Read Story</a></div></div></div></div></div>';
+                  htmlString +='<div class="row"><div class="card horizontal col s12"><div><div class="row"><div class="card-image col s6"><img src="https://cdn.pixabay.com/photo/2018/05/13/17/18/paris-3397173_1280.jpg" alt="" class="card-image responsive-img storyImg"></div><div class="col s6"><h4 class="card-title">'+blog.user_title+'<i class="material-icons right">more_vert</i></h4></div></div><div class="row"><div  class="card-stacked"><p>'+blog.user_StoryList+'</p></div><div class="card-action"><a href="/api/blog/'+blog.ParticipantClientId+'" target="_blank">Read Story</a></div></div></div></div></div>';
                 })
       
                 blogContainer.html(htmlString);
